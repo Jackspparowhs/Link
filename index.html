@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PirateRuler Shortener (client-side)</title>
+<meta name="description" content="Client-side link shortener using localStorage." />
+<style>
+  :root{--bg:#f6fbff;--card:#fff;--muted:#6b7480;--text:#072033;--accent:#5ab3ff}
+  html.dark{--bg:#071225;--card:#071827;--muted:#98a7bf;--text:#e9f1ff;--accent:#6b7dff}
+  *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,var(--bg),#e9f6ff);color:var(--text);padding:18px}
+  .wrap{max-width:980px;margin:0 auto}
+  .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 12px 30px rgba(2,8,20,0.06);border:1px solid rgba(0,0,0,0.04)}
+  h1{margin:0 0 8px 0;font-size:20px}
+  p.m{margin:0 0 12px 0;color:var(--muted)}
+  .row{display:flex;gap:8px;flex-wrap:wrap}
+  input[type=text]{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);min-width:0;flex:1;background:transparent;color:var(--text)}
+  button{padding:8px 12px;border-radius:8px;border:none;background:var(--accent);color:white;cursor:pointer;font-weight:700}
+  button.ghost{background:transparent;border:1px solid rgba(0,0,0,0.08);color:var(--text);font-weight:700}
+  .stats{margin-top:10px;color:var(--muted);font-size:13px}
+  table{width:100%;border-collapse:collapse;margin-top:12px}
+  th,td{padding:8px;border-bottom:1px solid rgba(0,0,0,0.04);text-align:left}
+  td.actions{white-space:nowrap}
+  .small{font-size:13px;color:var(--muted)}
+  .muted{color:var(--muted)}
+  .footer{margin-top:12px;text-align:center;color:var(--muted);font-size:13px}
+  .flex-between{display:flex;justify-content:space-between;align-items:center}
+  .theme-toggle{cursor:pointer;padding:6px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent}
+  pre{max-height:300px;overflow:auto;background:#fafafa;padding:8px;border-radius:8px;border:1px solid #eee}
+  @media(max-width:640px){ .row{flex-direction:column} td.actions button{margin-top:6px} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="flex-between">
+        <div>
+          <h1>PirateRuler — Shortener (client-only)</h1>
+          <p class="m small">Create short links stored in your browser. Export/import JSON to share or backup.</p>
+        </div>
+        <div>
+          <button id="themeBtn" class="theme-toggle">Toggle Theme</button>
+        </div>
+      </div>
+
+      <div style="margin-top:12px" class="row">
+        <input id="longUrl" type="text" placeholder="Paste long URL (https://...)" />
+        <input id="customAlias" type="text" placeholder="Custom alias (optional)" style="width:160px" />
+        <button id="makeBtn">Create</button>
+        <button id="exportBtn" class="ghost">Export JSON</button>
+        <button id="importBtn" class="ghost">Import JSON</button>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <table id="listTable" aria-live="polite">
+        <thead><tr><th>Short</th><th>Destination</th><th style="width:90px">Clicks</th><th style="width:180px">Actions</th></tr></thead>
+        <tbody id="listBody"></tbody>
+      </table>
+
+      <div style="margin-top:12px" class="row">
+        <input id="openCode" type="text" placeholder="Open code (or paste ?r=CODE or #CODE or /CODE in URL)" />
+        <button id="goBtn" class="ghost">Open</button>
+        <div style="flex:1"></div>
+        <button id="clearAll" class="ghost">Clear All</button>
+      </div>
+
+      <div class="footer">
+        <div class="muted">Note: data stored locally. To make links public for everyone, you'll need a server or serverless KV.</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const STORE_KEY = 'pr-short-mapping-v1';
+  const el = id => document.getElementById(id);
+  const longUrl = el('longUrl'), customAlias = el('customAlias'), makeBtn = el('makeBtn');
+  const listBody = el('listBody'), statsEl = el('stats'), exportBtn = el('exportBtn'), importBtn = el('importBtn');
+  const openCode = el('openCode'), goBtn = el('goBtn'), clearAll = el('clearAll');
+  const themeBtn = el('themeBtn');
+
+  // Theme toggle (persist)
+  function applyTheme(t){
+    if(t==='dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+    localStorage.setItem('pr-theme', t);
+  }
+  themeBtn.addEventListener('click', ()=> applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'));
+  applyTheme(localStorage.getItem('pr-theme') || 'light');
+
+  // helpers
+  function loadStore(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }catch(e){ return {}; } }
+  function saveStore(s){ localStorage.setItem(STORE_KEY, JSON.stringify(s)); renderList(); updateStats(); }
+  function randCode(len=6){
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let out=''; for(let i=0;i<len;i++) out += chars[Math.floor(Math.random()*chars.length)]; return out;
+  }
+  function normalizeUrl(u){
+    try{
+      if(!u) return '';
+      // if missing scheme, assume https
+      if(!/^https?:\/\//i.test(u)) u = 'https://' + u;
+      const parsed = new URL(u);
+      return parsed.href;
+    }catch(e){ return ''; }
+  }
+
+  // create mapping
+  makeBtn.addEventListener('click', ()=>{
+    const url = normalizeUrl(longUrl.value.trim());
+    if(!url){ alert('Enter a valid URL (http/https).'); return; }
+    const store = loadStore();
+    let code = customAlias.value.trim();
+    if(code){
+      code = code.replace(/[^a-zA-Z0-9\-_]/g, '');
+      if(!code) { alert('Invalid custom alias. Use letters/numbers/-/_ only.'); return; }
+      if(store[code]) { if(!confirm('Alias exists — overwrite?')) return; }
+    } else {
+      // generate unique code
+      let attempt=0;
+      do { code = randCode(5 + Math.floor(Math.random()*2)); attempt++; if(attempt>20) break; } while(store[code]);
+    }
+    store[code] = { url: url, created: new Date().toISOString(), clicks: (store[code] && store[code].clicks) ? store[code].clicks : 0 };
+    saveStore(store);
+    longUrl.value = ''; customAlias.value = '';
+    copyToClipboard(makeShortLink(code));
+    alert('Created short: ' + makeShortLink(code) + ' (copied to clipboard)');
+  });
+
+  function makeShortLink(code){
+    // builds full link using current host (works locally too)
+    const base = location.origin + location.pathname.replace(/index\.html$/,'');
+    // try to produce clean root path without query/hash
+    const root = (base.endsWith('/')? base : base.replace(/\/[^/]*$/,'/'));
+    // recommended usage: host should serve index.html for routes to enable /CODE
+    return root + (code);
+  }
+
+  function renderList(){
+    const store = loadStore();
+    listBody.innerHTML = '';
+    const keys = Object.keys(store).sort((a,b)=> (store[b].created || '') - (store[a].created || ''));
+    if(!keys.length) {
+      listBody.innerHTML = '<tr><td colspan="4" class="small muted">No short links yet — create one above.</td></tr>';
+      return;
+    }
+    for(const k of keys){
+      const it = store[k];
+      const short = makeShortLink(k);
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td><a href="${short}" target="_blank" rel="noopener noreferrer">${short}</a><div class="small muted">${k}</div></td>
+                      <td><a href="${it.url}" target="_blank" rel="noopener noreferrer">${it.url}</a></td>
+                      <td>${(it.clicks||0)}</td>
+                      <td class="actions">
+                        <button data-copy="${k}">Copy</button>
+                        <button data-open="${k}" class="ghost">Open</button>
+                        <button data-del="${k}" class="ghost">Delete</button>
+                      </td>`;
+      listBody.appendChild(tr);
+    }
+  }
+
+  listBody.addEventListener('click', (e)=>{
+    const cp = e.target.closest('button[data-copy]');
+    if(cp){ const k = cp.dataset.copy; copyToClipboard(makeShortLink(k)); alert('Copied'); return; }
+    const op = e.target.closest('button[data-open]');
+    if(op){ const k = op.dataset.open; openShort(k); return; }
+    const dl = e.target.closest('button[data-del]');
+    if(dl){ const k = dl.dataset.del; if(confirm('Delete ' + k + '?')) { const s = loadStore(); delete s[k]; saveStore(s); } return; }
+  });
+
+  function updateStats(){
+    const s = loadStore(); const count = Object.keys(s).length;
+    let clicks = 0;
+    Object.values(s).forEach(v=> clicks += (v.clicks||0));
+    statsEl.textContent = `Links created: ${count} — Total clicks (this browser): ${clicks}`;
+  }
+
+  function copyToClipboard(txt){
+    if(navigator.clipboard) return navigator.clipboard.writeText(txt);
+    const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+  }
+
+  // open / redirect behavior
+  function openShort(code){
+    const store = loadStore();
+    const item = store[code];
+    if(!item){ alert('Not found: ' + code); return; }
+    // increment local click count
+    item.clicks = (item.clicks||0) + 1; saveStore(store);
+    // redirect
+    window.open(item.url, '_blank');
+  }
+
+  // handle redirect when loaded with code in URL
+  function handleIncoming(){
+    // priority: query ?r=, then hash (#code), then pathname /code (if rewrites to index.html)
+    const q = new URLSearchParams(location.search).get('r');
+    const hash = location.hash.replace(/^#\/?/,'');
+    let pathCode = '';
+    // path might be /index.html or / or /code. We'll try to extract code if path not index.html and not root.
+    const pathname = decodeURIComponent(location.pathname || '/');
+    if(pathname && pathname !== '/' && !pathname.endsWith('index.html')) {
+      // strip leading slash
+      pathCode = pathname.replace(/^\/+/,'').replace(/\/+$/,'');
+    } else if(pathname.endsWith('index.html')) {
+      const maybe = pathname.replace(/.*\/([^\/]+)$/, '$1');
+      if(maybe && maybe !== 'index.html') pathCode = maybe;
+    }
+    const code = q || hash || pathCode;
+    if(!code) return;
+    // try to find mapping
+    const store = loadStore();
+    const item = store[code];
+    if(item){
+      // increment then redirect in same tab
+      item.clicks = (item.clicks||0) + 1; saveStore(store);
+      // Respect direct redirect (replace)
+      location.replace(item.url);
+    } else {
+      // If not found, offer option to open original (maybe it's external shortener)
+      // But if there's a fallback pattern (like code.html), we do nothing
+      console.warn('Short code not found locally:', code);
+      // optionally you could attempt to treat code as base62 encoded url (not implemented)
+    }
+  }
+
+  // export / import
+  exportBtn.addEventListener('click', ()=>{
+    const s = loadStore();
+    const blob = new Blob([JSON.stringify(s, null, 2)], {type:'application/json'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'pr-links.json'; a.click(); URL.revokeObjectURL(a.href);
+  });
+  importBtn.addEventListener('click', ()=>{
+    const f = document.createElement('input'); f.type='file'; f.accept='application/json'; f.onchange = (e)=>{
+      const file = e.target.files[0]; if(!file) return;
+      const reader = new FileReader();
+      reader.onload = ()=> {
+        try{
+          const data = JSON.parse(reader.result);
+          if(typeof data !== 'object'){ alert('Invalid JSON'); return; }
+          const store = loadStore();
+          // merge
+          Object.keys(data).forEach(k => { store[k] = data[k]; });
+          saveStore(store); alert('Imported.');
+        }catch(err){ alert('Import failed: ' + err.message); }
+      };
+      reader.readAsText(file);
+    }; f.click();
+  });
+
+  // open code input
+  goBtn.addEventListener('click', ()=> {
+    const text = openCode.value.trim();
+    if(!text) return alert('Enter code or url.');
+    // if full url with ?r=..., try to extract
+    try{
+      const u = new URL(text);
+      const code = new URLSearchParams(u.search).get('r') || u.hash.replace(/^#/,'') || u.pathname.replace(/^\/+/,'');
+      if(code){ // open as code
+        openShort(code); return;
+      }
+    }catch(e){}
+    // else treat as code directly
+    openShort(text);
+  });
+
+  clearAll.addEventListener('click', ()=> {
+    if(confirm('Clear all local short links? This cannot be undone.')) { localStorage.removeItem(STORE_KEY); renderList(); updateStats(); }
+  });
+
+  // initial render
+  renderList(); updateStats();
+  // try to handle incoming redirect codes (if present)
+  handleIncoming();
+
+  // update view when storage changes (same tab)
+  window.addEventListener('storage', ()=> { renderList(); updateStats(); });
+
+})();
+</script>
+</body>
+</html>
