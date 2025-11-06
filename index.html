@@ -20,12 +20,8 @@
     --shadow-lg: 0 18px 50px rgba(0,0,0,0.6);
     --shadow-sm: 0 8px 24px rgba(0,0,0,0.45);
   }
-
   *{box-sizing:border-box}
-  body{
-    margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    background:linear-gradient(180deg,var(--bg), #e9f6ff); color:var(--text); -webkit-font-smoothing:antialiased;
-  }
+  body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:linear-gradient(180deg,var(--bg), #e9f6ff);color:var(--text);-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
   .container{max-width:1200px;margin:14px auto;padding:18px}
   header.header{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(107,125,255,0.06), rgba(11,179,255,0.02));box-shadow:var(--shadow-sm)}
@@ -33,54 +29,28 @@
   .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-start),var(--accent-end));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px}
   .title-strong{font-weight:900;font-size:18px}
   .by{font-size:12px;color:var(--muted)}
-
   .grid{display:grid;grid-template-columns:360px 1fr;gap:18px;margin-top:18px;align-items:start}
-  @media(max-width:980px){ .grid{grid-template-columns:1fr} }
-
+  @media(max-width:980px){ .grid{grid-template-columns:1fr} .sidebar{width:94vw} }
   .card{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,0.04)}
   .tools{display:flex;gap:8px;flex-wrap:wrap}
   .btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(10,20,40,0.06);background:transparent;cursor:pointer;font-weight:700}
   .btn.primary{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:white;border:none}
-  .btn.ghost{background:transparent}
   .big{font-size:20px;font-weight:900;margin:0 0 6px 0}
   .muted{color:var(--muted)}
-
-  /* canvas area */
-  #canvasWrap{border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#fff,#f8fbff);padding:16px;display:flex;flex-direction:column;min-height:480px}
+  #canvasWrap{border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#fff,#f8fbff);padding:16px;display:flex;flex-direction:column;min-height:420px}
   canvas{background:white;border-radius:12px;box-shadow:var(--shadow-sm);width:100%;height:auto;display:block;touch-action:none}
-
-  .toolbar{display:flex;flex-direction:column;gap:12px}
+  .panel .section{margin-bottom:14px}
+  .small{font-size:13px;color:var(--muted)}
+  footer{margin-top:18px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.96));text-align:center;box-shadow:var(--shadow-lg)}
+  .visit{padding:10px 18px;border-radius:999px;background:linear-gradient(90deg,#ff7aa2 0%, #6b7dff 100%);color:#fff;font-weight:800;text-decoration:none}
+  .sidebar{position:fixed;right:0;top:0;height:100vh;width:360px;max-width:94vw;transform:translateX(120%);transition:transform .28s;z-index:120;padding:18px;overflow:auto;background:var(--card);box-shadow:-40px 0 80px rgba(2,8,20,0.25);border-radius:0 0 0 14px}
+  .sidebar.open{transform:translateX(0)}
+  .hidden{display:none}
   .controls-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   input[type=color]{width:44px;height:44px;padding:0;border-radius:8px;border:1px solid rgba(10,20,40,0.06)}
   .size-slider{width:140px}
-
-  .label{font-weight:800;color:var(--muted);font-size:13px}
-
-  /* tools & options panel */
-  .panel .section{margin-bottom:14px}
-  .panel h3{margin:0 0 8px 0;font-size:16px}
-  .small{font-size:13px;color:var(--muted)}
-
-  /* footer */
-  footer{margin-top:18px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.96));text-align:center;box-shadow:var(--shadow-lg)}
-  .visit{padding:10px 18px;border-radius:999px;background:linear-gradient(90deg,#ff7aa2 0%, #6b7dff 100%);color:#fff;font-weight:800;text-decoration:none}
-
-  /* sidebar (mobile overlay) */
-  .sidebar{position:fixed;right:0;top:0;height:100vh;width:360px;max-width:94vw;transform:translateX(120%);transition:transform .28s;z-index:120;padding:18px;overflow:auto;background:var(--card);box-shadow:-40px 0 80px rgba(2,8,20,0.25);border-radius:0 0 0 14px}
-  .sidebar.open{transform:translateX(0)}
-
-  /* compact mobile adjustments */
-  @media(max-width:520px){
-    .logo{width:48px;height:48px}
-    .title-strong{font-size:16px}
-    #canvasWrap{min-height:420px;padding:10px}
-  }
-
-  /* small helpers */
-  .muted-2{color:var(--muted);font-size:13px}
   .kbd{padding:6px 8px;border-radius:6px;border:1px solid rgba(0,0,0,0.06);background:transparent;font-weight:700}
   .tools .btn.active{box-shadow:0 8px 24px rgba(11,107,255,0.08);transform:translateY(-2px)}
-  .hidden{display:none}
 </style>
 </head>
 <body>
@@ -93,15 +63,14 @@
         <div class="by">by PirateRuler.com</div>
       </div>
     </div>
-
     <div style="display:flex;gap:10px;align-items:center">
       <div style="position:relative" id="themeSelectWrap">
         <button id="themeBtn" class="btn primary">Light ▾</button>
         <div id="themeList" style="display:none;position:absolute;right:0;top:44px;background:var(--card);border-radius:8px;padding:8px;box-shadow:var(--shadow-sm);z-index:999">
-          <div class="btn ghost theme-item" data-theme="light">Light</div>
-          <div class="btn ghost theme-item" data-theme="dark">Dark</div>
-          <div class="btn ghost theme-item" data-theme="ocean">Ocean</div>
-          <div class="btn ghost theme-item" data-theme="sunset">Sunset</div>
+          <div class="btn" data-theme="light">Light</div>
+          <div class="btn" data-theme="dark">Dark</div>
+          <div class="btn" data-theme="ocean">Ocean</div>
+          <div class="btn" data-theme="sunset">Sunset</div>
         </div>
       </div>
       <button id="openSidebarBtn" class="btn">☰</button>
@@ -109,21 +78,20 @@
   </header>
 
   <div class="grid">
-    <!-- left panel (tools) -->
     <aside class="card panel" aria-label="Tools & Options">
       <h3>Tools & Options</h3>
 
       <div class="section">
         <div class="small">Tools</div>
         <div class="tools" id="toolsList" style="margin-top:8px">
-          <button class="btn" data-tool="brush">Brush</button>
-          <button class="btn" data-tool="eraser">Eraser</button>
-          <button class="btn" data-tool="line">Line</button>
-          <button class="btn" data-tool="rect">Rect</button>
-          <button class="btn" data-tool="circle">Circle</button>
-          <button class="btn" data-tool="fill">Fill</button>
-          <button class="btn" data-tool="text">Text</button>
-          <button class="btn" data-tool="picker">Picker</button>
+          <button class="btn tool-btn" data-tool="brush">Brush</button>
+          <button class="btn tool-btn" data-tool="eraser">Eraser</button>
+          <button class="btn tool-btn" data-tool="line">Line</button>
+          <button class="btn tool-btn" data-tool="rect">Rect</button>
+          <button class="btn tool-btn" data-tool="circle">Circle</button>
+          <button class="btn tool-btn" data-tool="fill">Fill</button>
+          <button class="btn tool-btn" data-tool="text">Text</button>
+          <button class="btn tool-btn" data-tool="picker">Picker</button>
         </div>
       </div>
 
@@ -132,13 +100,11 @@
         <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
           <input id="colorPicker" type="color" value="#000000" />
           <input id="sizeRange" class="size-slider" type="range" min="1" max="120" value="6" />
-          <div id="sizeText" class="label">6</div>
+          <div id="sizeText" class="small">6</div>
         </div>
         <div style="margin-top:8px">
           <select id="brushType" style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">
-            <option value="round">Round</option>
-            <option value="square">Square</option>
-            <option value="soft">Soft</option>
+            <option value="round">Round</option><option value="square">Square</option><option value="soft">Soft</option>
           </select>
         </div>
       </div>
@@ -159,9 +125,7 @@
           <button id="saveJpg" class="btn">Export JPG</button>
           <button id="copyImg" class="btn">Copy Image</button>
           <button id="fullBtn" class="btn">Full</button>
-          <label class="btn" style="display:inline-block;cursor:pointer">
-            Upload <input id="uploadInput" type="file" accept="image/*" class="hidden" />
-          </label>
+          <label class="btn" style="display:inline-block;cursor:pointer">Upload <input id="uploadInput" type="file" accept="image/*" class="hidden" /></label>
         </div>
       </div>
 
@@ -199,18 +163,17 @@
           <li>Pick color & size. On mobile use finger or stylus.</li>
           <li>Use Upload to place an image on canvas.</li>
           <li>Use Undo/Redo or Save to download your drawing.</li>
-          <li>Full button toggles fullscreen for better drawing.</li>
+          <li>Full toggles fullscreen for better drawing.</li>
         </ol>
       </div>
     </aside>
 
-    <!-- main canvas area -->
     <main>
       <section id="canvasWrap" class="card" aria-label="Canvas area">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
           <div>
-            <div class="muted-2">Tool: <span id="currentTool">Picker</span></div>
-            <div class="muted-2">Color: <span id="currentColor">#000000</span> &nbsp; Size: <span id="currentSize">6</span></div>
+            <div class="small">Tool: <span id="currentTool">Picker</span></div>
+            <div class="small">Color: <span id="currentColor">#000000</span> &nbsp; Size: <span id="currentSize">6</span></div>
           </div>
           <div class="small muted">Tip: on mobile use finger or stylus</div>
         </div>
@@ -218,17 +181,17 @@
         <canvas id="drawCanvas" width="1600" height="900" style="background:white"></canvas>
       </section>
 
-      <div style="height:16px"></div>
+      <div style="height:14px"></div>
 
       <div class="card" style="padding:12px">
-        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-          <button class="btn" data-tool="brush">Brush</button>
-          <button class="btn" data-tool="eraser">Eraser</button>
-          <button class="btn" data-tool="line">Line</button>
-          <button class="btn" data-tool="rect">Rect</button>
-          <button class="btn" data-tool="circle">Circle</button>
-          <button class="btn" data-tool="text">Text</button>
-          <button class="btn" data-tool="picker">Picker</button>
+        <div class="controls-row">
+          <button class="btn quick-tool" data-tool="brush">Brush</button>
+          <button class="btn quick-tool" data-tool="eraser">Eraser</button>
+          <button class="btn quick-tool" data-tool="line">Line</button>
+          <button class="btn quick-tool" data-tool="rect">Rect</button>
+          <button class="btn quick-tool" data-tool="circle">Circle</button>
+          <button class="btn quick-tool" data-tool="text">Text</button>
+          <button class="btn quick-tool" data-tool="picker">Picker</button>
           <input id="quickColor" type="color" value="#000000" />
           <input id="quickSize" type="range" min="1" max="120" value="6" />
           <div style="margin-left:auto">
@@ -247,545 +210,375 @@
     <small class="muted">© <span id="year"></span> PirateRuler</small>
   </footer>
 
-  <!-- sidebar overlay with links -->
   <aside id="sidebar" class="sidebar" aria-hidden="true">
     <div style="display:flex;justify-content:flex-end"><button id="closeSidebar" class="btn">Close</button></div>
     <h3 style="margin-top:6px">PirateRuler Links</h3>
-    <p class="muted">Quick links & backup resources</p>
+    <p class="small muted">Quick links & backup resources</p>
     <nav style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
       <a href="https://pirateruler.com/post/about.html" target="_blank" rel="noopener noreferrer">About — PirateRuler</a>
       <a href="https://pirateruler.com/post/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
       <a href="https://pirateruler.com/post/contact.html" target="_blank" rel="noopener noreferrer">Contact</a>
       <a href="https://pirateruler.com/post/terms.html" target="_blank" rel="noopener noreferrer">Terms & Service</a>
     </nav>
-    <div style="margin-top:18px;color:var(--muted)">If this tool is offline visit PirateRuler for backups:<br><a href="https://pirateruler.com" target="_blank" rel="noopener noreferrer">pirateruler.com</a></div>
   </aside>
 </div>
 
 <script>
-  // small helpers
-  const el = id => document.getElementById(id);
-  el('year').textContent = new Date().getFullYear();
+/* ================== helpers & init ================== */
+const el = id => document.getElementById(id);
+el('year').textContent = new Date().getFullYear();
 
-  // THEME
-  const root = document.documentElement;
-  const themeBtn = el('themeBtn');
-  (function initTheme(){
-    const saved = localStorage.getItem('pr-theme') || 'light';
-    applyTheme(saved);
-  })();
-  document.querySelectorAll('.theme-item').forEach(it => it.addEventListener('click', e=>{
-    applyTheme(e.currentTarget.dataset.theme);
-    el('themeList').style.display='none';
-  }));
-  themeBtn.addEventListener('click', ()=> el('themeList').style.display = el('themeList').style.display === 'block' ? 'none' : 'block');
-  document.addEventListener('click', e => { if(!el('themeSelectWrap')?.contains(e.target)) el('themeList').style.display='none'; });
-  function applyTheme(t){
-    ['dark','ocean','sunset'].forEach(c => root.classList.remove(c));
-    if(t==='dark'){ root.classList.add('dark'); themeBtn.textContent='Dark ▾'; localStorage.setItem('pr-theme','dark'); }
-    else if(t==='ocean'){ root.classList.add('ocean'); themeBtn.textContent='Ocean ▾'; localStorage.setItem('pr-theme','ocean'); }
-    else if(t==='sunset'){ root.classList.add('sunset'); themeBtn.textContent='Sunset ▾'; localStorage.setItem('pr-theme','sunset'); }
-    else { themeBtn.textContent='Light ▾'; localStorage.setItem('pr-theme','light'); }
-  }
+// THEME
+const root = document.documentElement;
+(function initTheme(){
+  const saved = localStorage.getItem('pr-theme') || 'light';
+  applyTheme(saved);
+})();
+document.querySelectorAll('#themeList [data-theme], #themeList .btn').forEach(it=>{
+  it.addEventListener('click', e => applyTheme(it.dataset.theme || it.textContent.toLowerCase()));
+});
+el('themeBtn').addEventListener('click', ()=> el('themeList').style.display = el('themeList').style.display === 'block' ? 'none' : 'block');
+document.addEventListener('click', e => { if(!el('themeSelectWrap')?.contains(e.target)) el('themeList').style.display='none'; });
+function applyTheme(t){
+  ['dark','ocean','sunset'].forEach(c=>root.classList.remove(c));
+  if(t==='dark'){ root.classList.add('dark'); el('themeBtn').textContent='Dark ▾'; localStorage.setItem('pr-theme','dark'); }
+  else if(t==='ocean'){ root.classList.add('ocean'); el('themeBtn').textContent='Ocean ▾'; localStorage.setItem('pr-theme','ocean'); }
+  else if(t==='sunset'){ root.classList.add('sunset'); el('themeBtn').textContent='Sunset ▾'; localStorage.setItem('pr-theme','sunset'); }
+  else { el('themeBtn').textContent='Light ▾'; localStorage.setItem('pr-theme','light'); }
+}
 
-  // Sidebar
-  const sidebar = el('sidebar'), openSidebarBtn = el('openSidebarBtn'), closeSidebar = el('closeSidebar');
-  openSidebarBtn.addEventListener('click', ()=> { sidebar.classList.add('open'); sidebar.setAttribute('aria-hidden','false'); });
-  closeSidebar.addEventListener('click', ()=> { sidebar.classList.remove('open'); sidebar.setAttribute('aria-hidden','true'); });
+/* SIDEBAR */
+const sidebar = el('sidebar'), openSidebarBtn = el('openSidebarBtn'), closeSidebar = el('closeSidebar');
+openSidebarBtn.addEventListener('click', ()=> { sidebar.classList.add('open'); sidebar.setAttribute('aria-hidden','false'); });
+closeSidebar.addEventListener('click', ()=> { sidebar.classList.remove('open'); sidebar.setAttribute('aria-hidden','true'); });
 
-  /*********** Canvas & Tools ***********/
-  const canvas = el('drawCanvas');
-  const ctx = canvas.getContext('2d', { alpha: true });
-  let drawing = false;
-  let tool = 'picker';
-  const state = {
-    color: '#000000',
-    size: 6,
-    brushType: 'round',
-    fontSize: 16,
-    fontFamily: 'Arial',
-    bold: false,
-    italic: false,
-    history: [],
-    historyPos: -1,
-    uploadImage: null
-  };
+/* CANVAS SETUP */
+const canvas = el('drawCanvas');
+const ctx = canvas.getContext('2d', { alpha: true });
+let drawing = false, tool = 'picker';
+const state = {
+  color: '#000000', size: 6, brushType:'round', fontSize:16, fontFamily:'Arial', bold:false, italic:false,
+  history: [], historyPos:-1
+};
 
-  // adjust canvas for devicePixelRatio for crisp lines
-  function setCanvasSizeFromValue(val){
-    const [w,h] = val.split('x').map(s => parseInt(s.trim()));
-    // set CSS width to container width if mobile to fit screen, but keep high internal resolution
-    canvas.width = w;
-    canvas.height = h;
-    canvas.style.width = '100%';
-    canvas.style.height = (Math.round((h/w) * canvas.clientWidth)) + 'px';
-    redrawFromState();
-    pushHistory(); // initial state snapshot
-  }
+// make canvas crisp and responsive
+function setCanvasSizeFromValue(val){
+  const [w,h] = val.split('x').map(s=>parseInt(s.trim()));
+  canvas.width = w;
+  canvas.height = h;
+  canvas.style.width = '100%';
+  canvas.style.height = Math.round((h/w)*canvas.clientWidth)+'px';
+  // fill white background
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,canvas.width,canvas.height);
+}
+el('canvasSize').addEventListener('change', e=> { setCanvasSizeFromValue(e.target.value); pushHistory(); });
+setCanvasSizeFromValue(el('canvasSize').value);
 
-  el('canvasSize').addEventListener('change', (e)=> setCanvasSizeFromValue(e.target.value));
-  // initialize default canvas size
-  setCanvasSizeFromValue(el('canvasSize').value);
+/* UI SYNC */
+function updateUI(){
+  el('currentColor').textContent = state.color;
+  el('currentSize').textContent = state.size;
+  el('sizeText').textContent = state.size;
+  el('colorPicker').value = state.color;
+  el('quickColor').value = state.color;
+  el('sizeRange').value = state.size;
+  el('quickSize').value = state.size;
+}
+updateUI();
 
-  // UI syncronize
-  const toolButtons = Array.from(document.querySelectorAll('[data-tool]'));
-  function setTool(t){
-    tool = t;
-    el('currentTool').textContent = t.charAt(0).toUpperCase() + t.slice(1);
-    toolButtons.forEach(b => b.classList.toggle('active', b.dataset.tool === t));
-  }
-  toolButtons.forEach(b => b.addEventListener('click', ()=> setTool(b.dataset.tool)));
-  setTool('picker');
-
-  // color & size
-  el('colorPicker').addEventListener('input', e => { state.color = e.target.value; el('currentColor').textContent = state.color; el('quickColor').value = state.color; });
-  el('quickColor').addEventListener('input', e => { state.color = e.target.value; el('colorPicker').value = state.color; el('currentColor').textContent = state.color; });
-  el('sizeRange').addEventListener('input', e => { state.size = parseInt(e.target.value); el('sizeText').textContent = state.size; el('currentSize').textContent = state.size; el('quickSize').value = state.size; });
-  el('quickSize').addEventListener('input', e => { state.size = parseInt(e.target.value); el('sizeRange').value = state.size; el('sizeText').textContent = state.size; el('currentSize').textContent = state.size; });
-
-  el('brushType').addEventListener('change', e => state.brushType = e.target.value);
-  el('fontSize').addEventListener('change', e => state.fontSize = parseInt(e.target.value));
-  el('fontFamily').addEventListener('change', e => state.fontFamily = e.target.value);
-  el('boldBtn').addEventListener('click', ()=> { state.bold = !state.bold; el('boldBtn').classList.toggle('active', state.bold); });
-  el('italicBtn').addEventListener('click', ()=> { state.italic = !state.italic; el('italicBtn').classList.toggle('active', state.italic); });
-
-  // drawing helpers
-  function getPointerPos(evt){
-    const rect = canvas.getBoundingClientRect();
-    let clientX, clientY;
-    if (evt.touches && evt.touches[0]) { clientX = evt.touches[0].clientX; clientY = evt.touches[0].clientY; }
-    else { clientX = evt.clientX; clientY = evt.clientY; }
-    const x = Math.round((clientX - rect.left) * (canvas.width / rect.width));
-    const y = Math.round((clientY - rect.top) * (canvas.height / rect.height));
-    return { x, y };
-  }
-
-  // history (undo/redo)
-  function pushHistory(){
-    try {
-      const data = canvas.toDataURL();
-      // if we had undone some steps and then new change -> drop forward states
-      if(state.historyPos < state.history.length - 1) state.history = state.history.slice(0, state.historyPos + 1);
-      state.history.push(data);
-      state.historyPos = state.history.length - 1;
-      updateUndoRedoButtons();
-    } catch(e) { console.warn('history push fail', e); }
-  }
-  function updateUndoRedoButtons(){
-    el('undoBtn').disabled = state.historyPos <= 0;
-    el('redoBtn').disabled = state.historyPos >= state.history.length - 1;
-  }
-  el('undoBtn').addEventListener('click', ()=> {
-    if(state.historyPos <= 0) return;
-    state.historyPos--; restoreHistory(state.history[state.historyPos]);
-    updateUndoRedoButtons();
+/* TOOLS BUTTONS (both panels) */
+function setTool(t){
+  tool = t;
+  el('currentTool').textContent = t[0].toUpperCase()+t.slice(1);
+  document.querySelectorAll('.tool-btn, .quick-tool, [data-tool]').forEach(b=>{
+    if(b.dataset && b.dataset.tool) b.classList.toggle('active', b.dataset.tool === t);
   });
-  el('redoBtn').addEventListener('click', ()=> {
-    if(state.historyPos >= state.history.length - 1) return;
-    state.historyPos++; restoreHistory(state.history[state.historyPos]);
-    updateUndoRedoButtons();
-  });
-  function restoreHistory(dataUrl){
-    const img = new Image();
-    img.onload = ()=> {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    };
-    img.src = dataUrl;
-  }
+}
+document.querySelectorAll('.tool-btn').forEach(b=> b.addEventListener('click', ()=> setTool(b.dataset.tool)));
+document.querySelectorAll('.quick-tool').forEach(b=> b.addEventListener('click', ()=> setTool(b.dataset.tool)));
+setTool('picker');
 
-  // clear
-  el('clearBtn').addEventListener('click', clearCanvas);
-  el('clearBtn2').addEventListener('click', clearCanvas);
-  function clearCanvas(){
-    if(!confirm('Clear canvas?')) return;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    // white background to keep exports white
-    ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,canvas.width,canvas.height);
-    pushHistory();
-  }
+/* color & size controls */
+el('colorPicker').addEventListener('input', e => { state.color = e.target.value; updateUI(); });
+el('quickColor').addEventListener('input', e => { state.color = e.target.value; updateUI(); });
+el('sizeRange').addEventListener('input', e => { state.size = parseInt(e.target.value); updateUI(); });
+el('quickSize').addEventListener('input', e => { state.size = parseInt(e.target.value); updateUI(); });
+el('brushType').addEventListener('change', e => state.brushType = e.target.value);
+el('fontSize').addEventListener('change', e => state.fontSize = parseInt(e.target.value));
+el('fontFamily').addEventListener('change', e => state.fontFamily = e.target.value);
+el('boldBtn').addEventListener('click', ()=> { state.bold = !state.bold; el('boldBtn').classList.toggle('active', state.bold); });
+el('italicBtn').addEventListener('click', ()=> { state.italic = !state.italic; el('italicBtn').classList.toggle('active', state.italic); });
 
-  // drawing variables for shapes
-  let startPos = null;
-  let snapshot = null;
+/* HISTORY (undo/redo) */
+function pushHistory(){
+  try {
+    // limit history size to avoid memory explosion
+    const data = canvas.toDataURL('image/png');
+    if(state.historyPos < state.history.length - 1) state.history = state.history.slice(0, state.historyPos+1);
+    state.history.push(data);
+    if(state.history.length > 40) state.history.shift();
+    state.historyPos = state.history.length - 1;
+    updateUndoRedo();
+  } catch(e){ console.warn('pushHistory', e); }
+}
+function updateUndoRedo(){
+  el('undoBtn').disabled = state.historyPos <= 0;
+  el('redoBtn').disabled = state.historyPos >= state.history.length - 1;
+}
+el('undoBtn').addEventListener('click', ()=> {
+  if(state.historyPos <= 0) return;
+  state.historyPos--;
+  restoreHistory(state.history[state.historyPos]);
+  updateUndoRedo();
+});
+el('redoBtn').addEventListener('click', ()=> {
+  if(state.historyPos >= state.history.length-1) return;
+  state.historyPos++;
+  restoreHistory(state.history[state.historyPos]);
+  updateUndoRedo();
+});
+function restoreHistory(dataUrl){
+  const img = new Image();
+  img.onload = ()=> { ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(img,0,0,canvas.width,canvas.height); }
+  img.src = dataUrl;
+}
 
-  // draw line helper
-  function drawLine(p1, p2, color, width, brushType){
-    ctx.save();
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = width;
-    ctx.lineCap = (brushType === 'round') ? 'round' : 'butt';
-    ctx.moveTo(p1.x + 0.5, p1.y + 0.5);
-    ctx.lineTo(p2.x + 0.5, p2.y + 0.5);
-    ctx.stroke();
-    ctx.restore();
-  }
-
-  // setup initial white background
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  // drawing event handlers
-  function pointerDown(e){
-    e.preventDefault();
-    drawing = true;
-    startPos = getPointerPos(e);
-    snapshot = ctx.getImageData(0,0,canvas.width,canvas.height);
-    if(tool === 'fill'){
-      floodFill(startPos.x, startPos.y, hexToRgba(state.color));
-      pushHistory();
-      drawing = false;
-      return;
-    }
-    if(tool === 'picker'){
-      const pixel = ctx.getImageData(startPos.x, startPos.y, 1, 1).data;
-      const hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
-      state.color = hex;
-      el('colorPicker').value = hex;
-      el('quickColor').value = hex;
-      el('currentColor').textContent = hex;
-      drawing = false;
-      return;
-    }
-    if(tool === 'text'){
-      // insert text at point
-      insertTextAt(startPos);
-      drawing = false;
-      return;
-    }
-    if(tool === 'eraser'){
-      // Erase via composite operation while moving
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.lineCap = (state.brushType === 'round') ? 'round' : 'butt';
-      ctx.lineJoin = 'round';
-      ctx.lineWidth = state.size;
-      ctx.beginPath();
-      ctx.moveTo(startPos.x, startPos.y);
-    } else if(tool === 'brush'){
-      ctx.save();
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.lineCap = (state.brushType === 'round') ? 'round' : 'butt';
-      ctx.lineJoin = 'round';
-      ctx.strokeStyle = state.color;
-      ctx.lineWidth = state.size;
-      if(state.brushType === 'soft'){
-        // soft brush: shadow for smoother
-        ctx.shadowColor = state.color;
-        ctx.shadowBlur = Math.max(4, state.size / 3);
-      } else { ctx.shadowBlur = 0; }
-      ctx.beginPath();
-      ctx.moveTo(startPos.x, startPos.y);
-    }
-  }
-  function pointerMove(e){
-    if(!drawing) return;
-    e.preventDefault();
-    const pos = getPointerPos(e);
-    if(tool === 'brush' || tool === 'eraser'){
-      ctx.lineTo(pos.x, pos.y);
-      ctx.stroke();
-      return;
-    }
-    // shapes: temporary draw from snapshot
-    restoreSnapshot(snapshot);
-    if(tool === 'line'){
-      drawLine(startPos, pos, state.color, state.size, state.brushType);
-    } else if(tool === 'rect'){
-      ctx.save();
-      ctx.strokeStyle = state.color;
-      ctx.lineWidth = state.size;
-      ctx.setLineDash([]);
-      ctx.strokeRect(Math.min(startPos.x,pos.x), Math.min(startPos.y,pos.y), Math.abs(pos.x - startPos.x), Math.abs(pos.y - startPos.y));
-      ctx.restore();
-    } else if(tool === 'circle'){
-      ctx.save();
-      ctx.strokeStyle = state.color;
-      ctx.lineWidth = state.size;
-      ctx.beginPath();
-      const cx = (startPos.x + pos.x)/2;
-      const cy = (startPos.y + pos.y)/2;
-      const rx = Math.abs(pos.x - startPos.x)/2;
-      const ry = Math.abs(pos.y - startPos.y)/2;
-      const r = Math.max(1, Math.sqrt(rx*rx+ry*ry));
-      ctx.ellipse(cx, cy, r, r, 0, 0, Math.PI*2);
-      ctx.stroke();
-      ctx.restore();
-    }
-  }
-  function pointerUp(e){
-    if(!drawing) return;
-    drawing = false;
-    const pos = getPointerPos(e);
-    if(tool === 'brush' || tool === 'eraser'){
-      ctx.closePath();
-      ctx.restore();
-      pushHistory();
-      return;
-    }
-    // shapes: draw final from snapshot
-    restoreSnapshot(snapshot);
-    if(tool === 'line'){
-      drawLine(startPos, pos, state.color, state.size, state.brushType);
-    } else if(tool === 'rect'){
-      ctx.save();
-      ctx.strokeStyle = state.color;
-      ctx.lineWidth = state.size;
-      ctx.strokeRect(Math.min(startPos.x,pos.x), Math.min(startPos.y,pos.y), Math.abs(pos.x - startPos.x), Math.abs(pos.y - startPos.y));
-      ctx.restore();
-    } else if(tool === 'circle'){
-      ctx.save();
-      ctx.strokeStyle = state.color;
-      ctx.lineWidth = state.size;
-      const cx = (startPos.x + pos.x)/2;
-      const cy = (startPos.y + pos.y)/2;
-      const rx = Math.abs(pos.x - startPos.x)/2;
-      const ry = Math.abs(pos.y - startPos.y)/2;
-      const r = Math.max(1, Math.sqrt(rx*rx+ry*ry));
-      ctx.beginPath(); ctx.ellipse(cx, cy, r, r, 0, 0, Math.PI*2); ctx.stroke();
-      ctx.restore();
-    }
-    pushHistory();
-  }
-
-  // event binding for mouse + touch
-  canvas.addEventListener('mousedown', pointerDown);
-  canvas.addEventListener('mousemove', pointerMove);
-  window.addEventListener('mouseup', pointerUp);
-  canvas.addEventListener('touchstart', pointerDown, {passive:false});
-  canvas.addEventListener('touchmove', pointerMove, {passive:false});
-  window.addEventListener('touchend', pointerUp);
-
-  // snapshot helpers
-  function restoreSnapshot(snap){ if(!snap) return; ctx.putImageData(snap, 0, 0); }
-  function redrawFromState(){
-    // if you want to initialize background white
-    ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,canvas.width,canvas.height);
-  }
-
-  // Flood fill (simple scanline) - works on limited sizes
-  function hexToRgba(hex){
-    const h = hex.replace('#','');
-    const bigint = parseInt(h, 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return [r,g,b,255];
-  }
-  function rgbToHex(r,g,b){
-    return '#' + [r,g,b].map(x => x.toString(16).padStart(2,'0')).join('');
-  }
-  function colorsMatch(a,b){
-    return a[0]===b[0] && a[1]===b[1] && a[2]===b[2] && a[3]===b[3];
-  }
-  function floodFill(startX, startY, fillColor){
-    const img = ctx.getImageData(0,0,canvas.width,canvas.height);
-    const w = img.width, h = img.height;
-    const data = img.data;
-    const startPos = (startY * w + startX) * 4;
-    const targetColor = [data[startPos], data[startPos+1], data[startPos+2], data[startPos+3]];
-    if(colorsMatch(targetColor, fillColor)) return;
-    const stack = [[startX, startY]];
-    while(stack.length){
-      const [x,y] = stack.pop();
-      let px = (y*w + x) * 4;
-      if(x < 0 || x >= w || y < 0 || y >= h) continue;
-      if(!colorsMatch([data[px],data[px+1],data[px+2],data[px+3]], targetColor)) continue;
-      data[px] = fillColor[0]; data[px+1] = fillColor[1]; data[px+2] = fillColor[2]; data[px+3] = fillColor[3];
-      stack.push([x+1,y],[x-1,y],[x,y+1],[x,y-1]);
-    }
-    ctx.putImageData(img, 0, 0);
-  }
-
-  // text insertion
-  function insertTextAt(pos){
-    const text = prompt('Enter text to insert:');
-    if(!text) return;
-    ctx.save();
-    ctx.fillStyle = state.color;
-    let font = '';
-    if(state.bold) font += 'bold ';
-    if(state.italic) font += 'italic ';
-    font += (state.fontSize || 16) + 'px ' + (state.fontFamily || 'Arial');
-    ctx.font = font;
-    ctx.textBaseline = 'top';
-    // scale for devicePixelRatio? we have canvas width/height in full pixels already.
-    ctx.fillText(text, pos.x, pos.y);
-    ctx.restore();
-    pushHistory();
-  }
-
-  // helpers: rgb->hex above
-  function hexToRgbaStr(hex){ const a = hexToRgba(hex); return `rgba(${a[0]},${a[1]},${a[2]},${a[3]/255})`; }
-
-  // picker utility
-  function pickColorAt(x,y){
-    const d = ctx.getImageData(x,y,1,1).data;
-    return rgbToHex(d[0],d[1],d[2]);
-  }
-
-  // helpers rgb->hex implemented above
-
-  // upload image
-  el('uploadInput').addEventListener('change', (e)=>{
-    const f = e.target.files && e.target.files[0];
-    if(!f) return;
-    const url = URL.createObjectURL(f);
-    const img = new Image();
-    img.onload = () => {
-      // place image centered and scaled to fit
-      const ratio = Math.min(canvas.width / img.width, canvas.height / img.height, 1);
-      const w = img.width * ratio;
-      const h = img.height * ratio;
-      const x = Math.round((canvas.width - w)/2);
-      const y = Math.round((canvas.height - h)/2);
-      ctx.drawImage(img, x, y, w, h);
-      pushHistory();
-      URL.revokeObjectURL(url);
-    };
-    img.onerror = ()=> { alert('Image load failed. Try re-saving the image on phone then upload.'); URL.revokeObjectURL(url); };
-    img.src = url;
-  });
-
-  // save/export
-  function exportImage(type='png', quality=0.92){
-    // Return blob and trigger download
-    const mime = (type==='png') ? 'image/png' : 'image/jpeg';
-    canvas.toBlob(blob => {
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `pirateruler-drawing.${type}`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }, mime, quality);
-  }
-  el('savePng').addEventListener('click', ()=> exportImage('png'));
-  el('savePng2').addEventListener('click', ()=> exportImage('png'));
-  el('saveJpg').addEventListener('click', ()=> exportImage('jpg', 0.9));
-  el('saveJpg2').addEventListener('click', ()=> exportImage('jpg', 0.9));
-
-  // copy image to clipboard (modern browsers)
-  el('copyImg').addEventListener('click', async ()=>{
-    try{
-      if(!navigator.clipboard) return alert('Copy not supported in this browser.');
-      canvas.toBlob(async blob => {
-        const item = new ClipboardItem({ [blob.type]: blob });
-        await navigator.clipboard.write([item]);
-        alert('Image copied to clipboard.');
-      });
-    }catch(e){ alert('Copy failed: ' + e.message); }
-  });
-
-  // undo/redo initial
+/* CLEAR */
+function clearCanvas(confirmClear=true){
+  if(confirmClear && !confirm('Clear canvas?')) return;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,canvas.width,canvas.height);
   pushHistory();
+}
+el('clearBtn').addEventListener('click', ()=> clearCanvas(true));
+el('clearBtn2').addEventListener('click', ()=> clearCanvas(true));
 
-  // basic keyboard shortcuts
-  window.addEventListener('keydown', (e)=>{
-    if(e.ctrlKey || e.metaKey){
-      if(e.key === 'z'){ e.preventDefault(); el('undoBtn').click(); }
-      if(e.key === 'y'){ e.preventDefault(); el('redoBtn').click(); }
-      if(e.key === 's'){ e.preventDefault(); exportImage('png'); }
-    }
-  });
+/* DRAWING IMPLEMENTATION */
+let startPos = null, snapshot = null;
+function getPointerPos(evt){
+  const rect = canvas.getBoundingClientRect();
+  let clientX, clientY;
+  if(evt.touches && evt.touches[0]) { clientX = evt.touches[0].clientX; clientY = evt.touches[0].clientY; }
+  else { clientX = evt.clientX; clientY = evt.clientY; }
+  const x = Math.round((clientX - rect.left) * (canvas.width / rect.width));
+  const y = Math.round((clientY - rect.top) * (canvas.height / rect.height));
+  return { x, y };
+}
+function restoreSnapshot(snap){ if(snap) ctx.putImageData(snap,0,0); }
 
-  // full screen handling
-  el('fullBtn').addEventListener('click', toggleFullScreen);
-  function toggleFullScreen(){
-    const elFull = document.documentElement;
-    if(!document.fullscreenElement){
-      if(elFull.requestFullscreen) elFull.requestFullscreen();
-      else if(elFull.webkitRequestFullscreen) elFull.webkitRequestFullscreen();
-      el('fullBtn').textContent = 'Exit';
-    } else {
-      if(document.exitFullscreen) document.exitFullscreen();
-      else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
-      el('fullBtn').textContent = 'Full';
-    }
+function startDrawing(e){
+  e.preventDefault();
+  const p = getPointerPos(e);
+  startPos = p;
+  snapshot = ctx.getImageData(0,0,canvas.width,canvas.height);
+  drawing = true;
+
+  if(tool === 'fill'){ floodFill(p.x,p.y, hexToRgba(state.color)); pushHistory(); drawing=false; return; }
+  if(tool === 'picker'){ const c = pickColorAt(p.x,p.y); state.color = c; updateUI(); drawing=false; return; }
+  if(tool === 'text'){ insertTextAt(p); drawing=false; return; }
+
+  if(tool === 'eraser' || tool === 'brush'){
+    ctx.save();
+    ctx.lineCap = (state.brushType === 'round') ? 'round' : 'butt';
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = state.size;
+    if(tool === 'eraser') ctx.globalCompositeOperation = 'destination-out';
+    else ctx.globalCompositeOperation = 'source-over';
+    ctx.strokeStyle = state.color;
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
   }
-
-  // Undo/Redo update on history push/restore
-  // Also keep UI current color/size shown
-  function updateUI(){
-    el('currentColor').textContent = state.color;
-    el('currentSize').textContent = state.size;
-    el('sizeText').textContent = state.size;
-    el('colorPicker').value = state.color;
-    el('quickColor').value = state.color;
-    el('sizeRange').value = state.size;
-    el('quickSize').value = state.size;
+}
+function duringDrawing(e){
+  if(!drawing) return;
+  e.preventDefault();
+  const p = getPointerPos(e);
+  if(tool === 'brush' || tool === 'eraser'){
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    return;
   }
-  updateUI();
-
-  // quick tool buttons in lower panel
-  document.querySelectorAll('[data-tool]').forEach(b=>{
-    b.addEventListener('click', ()=> setTool(b.dataset.tool));
-  });
-
-  // image picking on canvas (picker tool single click)
-  canvas.addEventListener('click', (e) => {
-    if(tool === 'picker'){
-      const pos = getPointerPos(e);
-      const hex = pickColorAt(pos.x, pos.y);
-      state.color = hex;
-      updateUI();
-    }
-  });
-
-  // helper to restore canvas size on window resize to maintain visual ratio
-  window.addEventListener('resize', ()=> {
-    // adjust displayed canvas height to keep aspect ratio
-    canvas.style.height = (Math.round((canvas.height / canvas.width) * canvas.clientWidth)) + 'px';
-  });
-
-  /***************** Utilities *****************/
-  function pushHistoryDebounced(){
-    // small safe push (debounce)
-    clearTimeout(pushHistoryDebounced._t);
-    pushHistoryDebounced._t = setTimeout(pushHistory, 200);
+  restoreSnapshot(snapshot);
+  ctx.lineWidth = state.size;
+  ctx.strokeStyle = state.color;
+  if(tool === 'line'){
+    ctx.beginPath(); ctx.moveTo(startPos.x, startPos.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+  } else if(tool === 'rect'){
+    ctx.strokeRect(Math.min(startPos.x,p.x), Math.min(startPos.y,p.y), Math.abs(p.x-startPos.x), Math.abs(p.y-startPos.y));
+  } else if(tool === 'circle'){
+    ctx.beginPath();
+    const cx = (startPos.x + p.x)/2;
+    const cy = (startPos.y + p.y)/2;
+    const rx = Math.abs(p.x - startPos.x)/2;
+    const ry = Math.abs(p.y - startPos.y)/2;
+    const r = Math.max(1, Math.sqrt(rx*rx + ry*ry));
+    ctx.ellipse(cx, cy, r, r, 0, 0, Math.PI*2);
+    ctx.stroke();
   }
-
-  // when drawing tools finish call pushHistory (already done)
-  // expose a quick save on unload
-  window.addEventListener('beforeunload', ()=> {
-    try{ localStorage.setItem('pr-last-drawing', canvas.toDataURL()); }catch(e){}
-  });
-
-  // optionally load last saved drawing if present
-  (function loadLast(){
-    try{
-      const data = localStorage.getItem('pr-last-drawing');
-      if(data){
-        const img = new Image();
-        img.onload = ()=> { ctx.drawImage(img,0,0,canvas.width,canvas.height); pushHistory(); };
-        img.src = data;
-      }
-    }catch(e){}
-  })();
-
-  // small helper: restore background white when drawing new canvas (for export)
-  function ensureWhiteBG(){
-    // if top-left pixel transparent, fill a white background below current image
-    const d = ctx.getImageData(0,0,1,1).data;
-    if(d[3] === 0){
-      // composite current image onto white
-      const temp = document.createElement('canvas');
-      temp.width = canvas.width; temp.height = canvas.height;
-      const tctx = temp.getContext('2d');
-      tctx.fillStyle = '#fff'; tctx.fillRect(0,0,temp.width,temp.height);
-      tctx.drawImage(canvas,0,0);
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.drawImage(temp,0,0);
-    }
+}
+function endDrawing(e){
+  if(!drawing) return;
+  drawing = false;
+  const p = getPointerPos(e);
+  if(tool === 'brush' || tool === 'eraser'){
+    ctx.closePath(); ctx.restore(); pushHistory(); return;
   }
+  restoreSnapshot(snapshot);
+  ctx.lineWidth = state.size; ctx.strokeStyle = state.color;
+  if(tool === 'line'){ ctx.beginPath(); ctx.moveTo(startPos.x, startPos.y); ctx.lineTo(p.x, p.y); ctx.stroke(); }
+  else if(tool === 'rect'){ ctx.strokeRect(Math.min(startPos.x,p.x), Math.min(startPos.y,p.y), Math.abs(p.x-startPos.x), Math.abs(p.y-startPos.y)); }
+  else if(tool === 'circle'){ ctx.beginPath(); const cx = (startPos.x + p.x)/2; const cy = (startPos.y + p.y)/2; const rx = Math.abs(p.x - startPos.x)/2; const ry = Math.abs(p.y - startPos.y)/2; const r = Math.max(1, Math.sqrt(rx*rx + ry*ry)); ctx.ellipse(cx, cy, r, r, 0, 0, Math.PI*2); ctx.stroke(); }
+  pushHistory();
+}
 
-  // small helpers to restore snapshot image drawn on pointerMove for shapes (for crispness)
-  // already using getImageData snapshot
+/* pointer events */
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', duringDrawing);
+window.addEventListener('mouseup', endDrawing);
+canvas.addEventListener('touchstart', startDrawing, {passive:false});
+canvas.addEventListener('touchmove', duringDrawing, {passive:false});
+window.addEventListener('touchend', endDrawing);
 
-  // make sure full button is visible on mobile; already included
+/* flood fill / picker util */
+function hexToRgba(hex){
+  const h = hex.replace('#','');
+  const bigint = parseInt(h,16);
+  return [(bigint>>16)&255, (bigint>>8)&255, bigint&255, 255];
+}
+function rgbToHex(r,g,b){ return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join(''); }
+function pickColorAt(x,y){
+  try{
+    const d = ctx.getImageData(x,y,1,1).data; return rgbToHex(d[0],d[1],d[2]);
+  }catch(e){ return '#000000'; }
+}
+function colorsMatch(a,b){ return a[0]===b[0] && a[1]===b[1] && a[2]===b[2] && a[3]===b[3]; }
+function floodFill(sx,sy, fillColor){
+  const w = canvas.width, h = canvas.height;
+  const img = ctx.getImageData(0,0,w,h);
+  const data = img.data;
+  const startIdx = (sy*w + sx) * 4;
+  const target = [data[startIdx], data[startIdx+1], data[startIdx+2], data[startIdx+3]];
+  if(colorsMatch(target, fillColor)) return;
+  const stack = [[sx,sy]];
+  while(stack.length){
+    const [x,y] = stack.pop();
+    if(x<0||x>=w||y<0||y>=h) continue;
+    const idx = (y*w + x) * 4;
+    if(!colorsMatch([data[idx],data[idx+1],data[idx+2],data[idx+3]], target)) continue;
+    data[idx] = fillColor[0]; data[idx+1] = fillColor[1]; data[idx+2] = fillColor[2]; data[idx+3] = fillColor[3];
+    stack.push([x+1,y],[x-1,y],[x,y+1],[x,y-1]);
+  }
+  ctx.putImageData(img,0,0);
+}
 
-  // Expose some quick logs for debugging if needed
-  // End of script
+/* text insertion */
+function insertTextAt(pos){
+  const txt = prompt('Enter text:');
+  if(!txt) return;
+  ctx.save();
+  ctx.fillStyle = state.color;
+  let font = '';
+  if(state.bold) font += 'bold ';
+  if(state.italic) font += 'italic ';
+  font += (state.fontSize || 16) + 'px ' + (state.fontFamily || 'Arial');
+  ctx.font = font;
+  ctx.textBaseline = 'top';
+  ctx.fillText(txt, pos.x, pos.y);
+  ctx.restore();
+  pushHistory();
+}
+
+/* UPLOAD */
+el('uploadInput').addEventListener('change', (e)=>{
+  const f = e.target.files && e.target.files[0]; if(!f) return;
+  const url = URL.createObjectURL(f); const img = new Image();
+  img.onload = ()=> {
+    const ratio = Math.min(canvas.width / img.width, canvas.height / img.height, 1);
+    const w = img.width * ratio; const h = img.height * ratio;
+    const x = Math.round((canvas.width - w)/2); const y = Math.round((canvas.height - h)/2);
+    ctx.drawImage(img, x, y, w, h);
+    URL.revokeObjectURL(url);
+    pushHistory();
+  };
+  img.onerror = ()=> { alert('Image load failed. Try re-saving image on phone then upload.'); URL.revokeObjectURL(url); };
+  img.src = url;
+});
+
+/* EXPORT / COPY */
+function exportImage(type='png', quality=0.92){
+  ensureWhiteBG();
+  canvas.toBlob(blob => {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `pirateruler-drawing.${type}`; a.click();
+    URL.revokeObjectURL(a.href);
+  }, (type==='png') ? 'image/png' : 'image/jpeg', quality);
+}
+el('savePng').addEventListener('click', ()=> exportImage('png'));
+el('savePng2').addEventListener('click', ()=> exportImage('png'));
+el('saveJpg').addEventListener('click', ()=> exportImage('jpg',0.9));
+el('saveJpg2').addEventListener('click', ()=> exportImage('jpg',0.9));
+
+el('copyImg').addEventListener('click', async ()=>{
+  try{
+    if(!navigator.clipboard) return alert('Copy not supported in this browser.');
+    canvas.toBlob(async blob => {
+      await navigator.clipboard.write([ new ClipboardItem({ [blob.type]: blob }) ]);
+      alert('Image copied to clipboard.');
+    });
+  }catch(e){ alert('Copy failed: '+ (e.message||e)); }
+});
+
+/* Fullscreen */
+el('fullBtn').addEventListener('click', ()=> {
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.() || document.documentElement.webkitRequestFullscreen?.();
+    el('fullBtn').textContent = 'Exit';
+  } else {
+    document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+    el('fullBtn').textContent = 'Full';
+  }
+});
+
+/* keyboard shortcuts */
+window.addEventListener('keydown', (e)=>{
+  if((e.ctrlKey||e.metaKey) && e.key==='z'){ e.preventDefault(); el('undoBtn').click(); }
+  if((e.ctrlKey||e.metaKey) && e.key==='y'){ e.preventDefault(); el('redoBtn').click(); }
+  if((e.ctrlKey||e.metaKey) && e.key==='s'){ e.preventDefault(); exportImage('png'); }
+});
+
+/* sync quick controls */
+el('colorPicker').addEventListener('input', ()=> { state.color = el('colorPicker').value; updateUI(); });
+el('quickColor').addEventListener('input', ()=> { state.color = el('quickColor').value; updateUI(); });
+el('sizeRange').addEventListener('input', ()=> { state.size = parseInt(el('sizeRange').value); updateUI(); });
+el('quickSize').addEventListener('input', ()=> { state.size = parseInt(el('quickSize').value); updateUI(); });
+
+/* initialize */
+ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,canvas.width,canvas.height);
+pushHistory();
+updateUndoRedo();
+
+/* save last drawing on unload, restore if present */
+window.addEventListener('beforeunload', ()=> {
+  try{ localStorage.setItem('pr-last-drawing', canvas.toDataURL()); }catch(e){}
+});
+(function loadLast(){
+  try{
+    const d = localStorage.getItem('pr-last-drawing'); if(!d) return;
+    const img = new Image(); img.onload = ()=> { ctx.drawImage(img,0,0,canvas.width,canvas.height); pushHistory(); }; img.src = d;
+  }catch(e){}
+})();
+
+/* helper: ensure white background before export */
+function ensureWhiteBG(){
+  const p = ctx.getImageData(0,0,1,1).data;
+  if(p[3] === 0){
+    const tmp = document.createElement('canvas'); tmp.width = canvas.width; tmp.height = canvas.height;
+    const tctx = tmp.getContext('2d');
+    tctx.fillStyle = '#fff'; tctx.fillRect(0,0,tmp.width,tmp.height);
+    tctx.drawImage(canvas,0,0);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(tmp,0,0);
+  }
+}
 </script>
 </body>
 </html>
