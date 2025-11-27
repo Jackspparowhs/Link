@@ -1,465 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools by PirateRuler.com – 100 Free Online Tools</title>
-    <meta name="description" content="100+ online tools by PirateRuler.com: calculators, converters, utilities, productivity tools, all frontend-only.">
-    <meta name="keywords" id="seo-keywords" content="tools, online utilities"> <meta name="author" content="PirateRuler.com">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="HTTrack is an easy-to-use website mirror utility. It allows you to download a World Wide website from the Internet to a local directory,building recursively all structures, getting html, images, and other files from the server to your computer. Links are rebuiltrelatively so that you can freely browse to the local site (works with any browser). You can mirror several sites together so that you can jump from one toanother. You can, also, update an existing mirror site, or resume an interrupted download. The robot is fully configurable, with an integrated help" />
+	<meta name="keywords" content="httrack, HTTRACK, HTTrack, winhttrack, WINHTTRACK, WinHTTrack, offline browser, web mirror utility, aspirateur web, surf offline, web capture, www mirror utility, browse offline, local  site builder, website mirroring, aspirateur www, internet grabber, capture de site web, internet tool, hors connexion, unix, dos, windows 95, windows 98, solaris, ibm580, AIX 4.0, HTS, HTGet, web aspirator, web aspirateur, libre, GPL, GNU, free software" />
+	<title>Local index - HTTrack Website Copier</title>
+  <!-- Mirror and index made by HTTrack Website Copier/3.49-2 [XR&CO'2014] -->
+	<style type="text/css">
+	<!--
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2300c6ff'/><stop offset='100%' style='stop-color:%230072ff'/></linearGradient></defs><rect width='64' height='64' rx='10' fill='url(%23g)'/><text x='32' y='42' font-family='Arial' font-weight='bold' font-size='28' fill='white' text-anchor='middle'>PR</text></svg>">
+body {
+	margin: 0;  padding: 0;  margin-bottom: 15px;  margin-top: 8px;
+	background: #77b;
+}
+body, td {
+	font: 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	}
 
-    <style>
-        /* -----------------------------------------------------------
-           CSS VARIABLES & THEMES
-        ----------------------------------------------------------- */
-        :root {
-            --primary-grad: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --bg-color: #f0f4f8;
-            --text-main: #1a1a2e;
-            --text-sec: #555;
-            --sidebar-width: 280px;
-            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --neon-glow: 0 0 10px rgba(0, 198, 255, 0.5);
-        }
+#subTitle {
+	background: #000;  color: #fff;  padding: 4px;  font-weight: bold; 
+	}
 
-        body.dark-mode {
-            --glass-bg: rgba(20, 20, 35, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --bg-color: #0f1016;
-            --text-main: #e0e0e0;
-            --text-sec: #a0a0a0;
-            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        }
+#siteNavigation a, #siteNavigation .current {
+	font-weight: bold;  color: #448;
+	}
+#siteNavigation a:link    { text-decoration: none; }
+#siteNavigation a:visited { text-decoration: none; }
 
-        /* -----------------------------------------------------------
-           RESET & BASE
-        ----------------------------------------------------------- */
-        * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s ease; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; }
+#siteNavigation .current { background-color: #ccd; }
 
-        /* -----------------------------------------------------------
-           LAYOUT GRID
-        ----------------------------------------------------------- */
-        .app-container { display: flex; min-height: 100vh; }
-        
-        /* -----------------------------------------------------------
-           SIDEBAR
-        ----------------------------------------------------------- */
-        #sidebar {
-            width: var(--sidebar-width);
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-right: 1px solid var(--glass-border);
-            height: 100vh;
-            position: fixed;
-            overflow-y: auto;
-            z-index: 100;
-            transform: translateX(0);
-        }
-        .sidebar-header { padding: 20px; border-bottom: 1px solid var(--glass-border); text-align: center; }
-        .visit-btn {
-            display: block; width: 100%; padding: 10px; margin-top: 10px;
-            background: var(--primary-grad); color: white; border-radius: 8px; font-weight: bold; text-align: center;
-            box-shadow: var(--neon-glow);
-        }
-        .visit-btn:hover { transform: scale(1.02); filter: brightness(1.1); }
+#siteNavigation a:hover   { text-decoration: none;  background-color: #fff;  color: #000; }
+#siteNavigation a:active  { text-decoration: none;  background-color: #ccc; }
 
-        .category-title {
-            padding: 15px 20px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #00c6ff; font-weight: bold; margin-top: 10px;
-        }
-        .nav-link {
-            display: block; padding: 10px 20px; color: var(--text-sec); font-size: 0.95rem; cursor: pointer;
-        }
-        .nav-link:hover, .nav-link.active {
-            background: linear-gradient(90deg, rgba(0,198,255,0.1), transparent);
-            color: #00c6ff; border-left: 4px solid #00c6ff;
-        }
 
-        /* -----------------------------------------------------------
-           MAIN CONTENT AREA
-        ----------------------------------------------------------- */
-        #main {
-            margin-left: var(--sidebar-width);
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+a:link    { text-decoration: underline;  color: #00f; }
+a:visited { text-decoration: underline;  color: #000; }
+a:hover   { text-decoration: underline;  color: #c00; }
+a:active  { text-decoration: underline; }
 
-        /* Header */
-        header {
-            height: 70px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 30px;
-            position: sticky; top: 0; z-index: 99;
-        }
-        .brand { display: flex; align-items: center; gap: 10px; }
-        .brand-logo {
-            width: 40px; height: 40px; background: var(--primary-grad);
-            border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            color: white; font-weight: 900; font-size: 1.2rem;
-            box-shadow: var(--neon-glow);
-        }
-        .brand-text { font-size: 1.2rem; font-weight: 700; }
-        .header-actions { display: flex; align-items: center; gap: 15px; }
-        
-        .theme-toggle { cursor: pointer; font-size: 1.2rem; padding: 5px; }
-        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+#pageContent {
+	clear: both;
+	border-bottom: 6px solid #000;
+	padding: 10px;  padding-top: 20px;
+	line-height: 1.65em;
+	background-image: url(backblue.gif);
+	background-repeat: no-repeat;
+	background-position: top right;
+	}
 
-        /* Content Render Area */
-        #content-area {
-            flex: 1; padding: 40px;
-        }
+#pageContent, #siteNavigation {
+	background-color: #ccd;
+	}
 
-        /* Tool Card UI */
-        .tool-container {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-            max-width: 800px; margin: 0 auto;
-            animation: fadeIn 0.5s ease;
-        }
-        .tool-header { margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 20px; }
-        .tool-title { font-size: 2rem; font-weight: 800; margin-bottom: 5px; }
-        .tool-subtitle { font-size: 0.9rem; color: #00c6ff; font-weight: 600; }
-        .tool-desc { margin-top: 10px; color: var(--text-sec); }
 
-        .tool-ui-placeholder {
-            background: rgba(0,0,0,0.03);
-            border: 2px dashed var(--glass-border);
-            border-radius: 10px;
-            padding: 40px;
-            text-align: center;
-            margin: 30px 0;
-        }
-        .input-group { margin-bottom: 15px; text-align: left; }
-        .input-mock { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: transparent; color: var(--text-main); }
-        .btn-mock { padding: 10px 25px; background: var(--primary-grad); border: none; color: white; border-radius: 6px; cursor: pointer; }
-        
-        .tool-visit-link {
-            display: inline-block; margin-top: 10px; font-size: 0.8rem; color: var(--text-sec); text-decoration: underline;
-        }
+.imgLeft  { float: left;   margin-right: 10px;  margin-bottom: 10px; }
+.imgRight { float: right;  margin-left: 10px;   margin-bottom: 10px; }
 
-        /* Footer */
-        footer {
-            text-align: center; padding: 30px; border-top: 1px solid var(--glass-border); color: var(--text-sec); font-size: 0.9rem;
-        }
-        .footer-btn {
-            display: inline-block; margin-top: 10px; padding: 5px 15px; border: 1px solid #00c6ff; color: #00c6ff; border-radius: 20px; font-size: 0.8rem;
-        }
+hr { height: 1px;  color: #000;  background-color: #000;  margin-bottom: 15px; }
 
-        /* Floating Button */
-        .fab {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--primary-grad); color: white;
-            padding: 15px 25px; border-radius: 50px;
-            font-weight: bold; box-shadow: var(--shadow);
-            z-index: 200; display: flex; align-items: center; gap: 10px;
-        }
-        .fab:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 198, 255, 0.4); }
+h1 { margin: 0;  font-weight: bold;  font-size: 2em; }
+h2 { margin: 0;  font-weight: bold;  font-size: 1.6em; }
+h3 { margin: 0;  font-weight: bold;  font-size: 1.3em; }
+h4 { margin: 0;  font-weight: bold;  font-size: 1.18em; }
 
-        /* Animations */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.blak { background-color: #000; }
+.hide { display: none; }
+.tableWidth { min-width: 400px; }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            :root { --sidebar-width: 0px; }
-            #sidebar { width: 280px; transform: translateX(-100%); }
-            #sidebar.open { transform: translateX(0); }
-            #main { margin-left: 0; }
-            .mobile-menu-btn { display: block; }
-            .fab span { display: none; } /* Hide text on mobile FAB */
-            .fab { border-radius: 50%; padding: 15px; width: 50px; height: 50px; justify-content: center; }
-        }
-    </style>
+.tblRegular       { border-collapse: collapse; }
+.tblRegular td    { padding: 6px;  background-image: url(fade.gif);  border: 2px solid #99c; }
+.tblHeaderColor, .tblHeaderColor td { background: #99c; }
+.tblNoBorder td   { border: 0; }
+
+
+// -->
+</style>
+
 </head>
-<body class="light-mode">
 
-    <div class="app-container">
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <a href="#" class="visit-btn" onclick="window.open('https://pirateruler.com')">Visit PirateRuler.com</a>
-            </div>
-            <div id="sidebar-menu">
-                </div>
-        </nav>
+<table width="76%" border="0" align="center" cellspacing="0" cellpadding="3" class="tableWidth">
+	<tr>
+	<td id="subTitle">HTTrack Website Copier - Open Source offline browser</td>
+	</tr>
+</table>
+<table width="76%" border="0" align="center" cellspacing="0" cellpadding="0" class="tableWidth">
+<tr class="blak">
+<td>
+	<table width="100%" border="0" align="center" cellspacing="1" cellpadding="0">
+	<tr>
+	<td colspan="6"> 
+		<table width="100%" border="0" align="center" cellspacing="0" cellpadding="10">
+		<tr> 
+		<td id="pageContent"> 
+<!-- ==================== End prologue ==================== -->
 
-        <main id="main">
-            <header>
-                <div class="brand">
-                    <div class="mobile-menu-btn" onclick="toggleSidebar()">☰</div>
-                    <div class="brand-logo">PR</div>
-                    <div class="brand-text">Tools <span style="font-size:0.8em; opacity:0.7">by PirateRuler.com</span></div>
-                </div>
-                <div class="header-actions">
-                    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
-                    <a href="https://pirateruler.com" class="visit-btn" style="padding: 8px 15px; font-size: 0.9rem;">Main Website</a>
-                </div>
-            </header>
+	<meta name="generator" content="HTTrack Website Copier/3.x">
+	<TITLE>Local index - HTTrack</TITLE>
+</HEAD>
+<BODY>
+<H1 ALIGN=Center>Index of locally available sites:</H1>
+	<TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="0">
+		<TR>
+			<TD BACKGROUND="fade.gif">
+				&middot;
+					<A HREF="www.pornhat.com/index.html">
+						PornHat - we ❤️ HD free porn videos!
+					</A>		
+			</TD>
+		</TR>
+	</TABLE>
+	<BR>
+	<BR>
+	<BR>
+  	<H6 ALIGN="RIGHT">
+	<I>Mirror and index made by HTTrack Website Copier [XR&amp;CO'2008]</I>
+	</H6>
+	<!-- Mirror and index made by HTTrack Website Copier/3.49-2 [XR&CO'2014] -->
+	<!-- Thanks for using HTTrack Website Copier! -->
+	<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=www.pornhat.com/index.html">
 
-            <div id="content-area">
-                </div>
 
-            <footer>
-                <p>&copy; 2025 Tools by PirateRuler.com – All Rights Reserved</p>
-                <a href="https://pirateruler.com" class="footer-btn">Visit PirateRuler.com</a>
-                <br><br>
-                <a href="#sitemap" onclick="renderSitemap()" style="font-size: 0.8rem;">Sitemap</a>
-            </footer>
-        </main>
-    </div>
+<!-- ==================== Start epilogue ==================== -->
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
 
-    <a href="https://pirateruler.com" class="fab">
-        <span>Go to Main Site</span>
-        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-    </a>
+<table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
+	<tr>
+	<td id="footer"><small>&copy; 2008 Xavier Roche & other contributors - Web Design: Leto Kauler.</small></td>
+	</tr>
+</table>
 
-    <script>
-        // ---------------------------------------------------
-        // 1. DATA: 100 TOOLS CONFIGURATION
-        // ---------------------------------------------------
-        const categories = [
-            "Utilities", "Calculators", "Converters", "Text Tools", "Image Tools", "Developer Tools", "Fun / Random", "Productivity"
-        ];
-
-        // Helper to generate tools quickly for the demo
-        // In a real scenario, descriptions would be unique per tool.
-        // Here we generate the structure programmatically to ensure 100 items fit in the code.
-        const toolsData = [];
-        let toolIdCounter = 1;
-
-        function createTool(name, cat) {
-            return {
-                id: `tool-${toolIdCounter++}`,
-                name: name,
-                category: cat,
-                desc: `A free, fast, and secure ${name} provided by PirateRuler.com. Runs entirely in your browser without server calls.`
-            };
-        }
-
-        // Populating 100 Tools
-        const rawToolsList = [
-            // Utilities
-            ["Password Generator", "Utilities"], ["Stopwatch", "Utilities"], ["Countdown Timer", "Utilities"], ["World Clock", "Utilities"], ["QR Code Generator", "Utilities"], ["Barcode Generator", "Utilities"], ["Internet Speed Test UI", "Utilities"], ["IP Address Lookup", "Utilities"], ["Date Calculator", "Utilities"], ["Age Calculator", "Utilities"], ["BMI Calculator", "Utilities"], ["Loan Calculator", "Utilities"],
-            
-            // Calculators
-            ["Scientific Calculator", "Calculators"], ["Percentage Calculator", "Calculators"], ["Discount Calculator", "Calculators"], ["Sales Tax Calculator", "Calculators"], ["Mortgage Calculator", "Calculators"], ["Auto Loan Calculator", "Calculators"], ["Inflation Calculator", "Calculators"], ["Salary Calculator", "Calculators"], ["Calorie Calculator", "Calculators"], ["Ovulation Calculator", "Calculators"], ["GPA Calculator", "Calculators"], ["Tip Calculator", "Calculators"],
-
-            // Converters
-            ["Unit Converter", "Converters"], ["Currency Converter UI", "Converters"], ["Binary to Text", "Converters"], ["Text to Binary", "Converters"], ["Hex to Decimal", "Converters"], ["Decimal to Hex", "Converters"], ["RGB to Hex", "Converters"], ["Hex to RGB", "Converters"], ["CMYK to RGB", "Converters"], ["Celsius to Fahrenheit", "Converters"], ["Fahrenheit to Celsius", "Converters"], ["Miles to KM", "Converters"], ["KM to Miles", "Converters"],
-
-            // Text Tools
-            ["Word Counter", "Text Tools"], ["Character Counter", "Text Tools"], ["Lorem Ipsum Generator", "Text Tools"], ["Case Converter", "Text Tools"], ["Text Reverser", "Text Tools"], ["Remove Duplicate Lines", "Text Tools"], ["Text to Speech UI", "Text Tools"], ["Slug Generator", "Text Tools"], ["Privacy Policy Generator", "Text Tools"], ["Terms of Service Generator", "Text Tools"], ["Email Extractor", "Text Tools"], ["URL Extractor", "Text Tools"], ["Markdown Previewer", "Text Tools"],
-
-            // Image Tools
-            ["Image Resizer UI", "Image Tools"], ["Image Cropper UI", "Image Tools"], ["Image Compressor UI", "Image Tools"], ["JPG to PNG", "Image Tools"], ["PNG to JPG", "Image Tools"], ["WebP Converter", "Image Tools"], ["Color Picker", "Image Tools"], ["Palette Generator", "Image Tools"], ["Gradient Generator", "Image Tools"], ["Image Filters", "Image Tools"], ["Base64 Image Decoder", "Image Tools"], ["Base64 Image Encoder", "Image Tools"], ["SVG Editor UI", "Image Tools"],
-
-            // Developer Tools
-            ["JSON Formatter", "Developer Tools"], ["JSON Validator", "Developer Tools"], ["JSON to XML", "Developer Tools"], ["XML to JSON", "Developer Tools"], ["HTML Encoder", "Developer Tools"], ["HTML Decoder", "Developer Tools"], ["URL Encoder", "Developer Tools"], ["URL Decoder", "Developer Tools"], ["CSS Minifier UI", "Developer Tools"], ["JS Minifier UI", "Developer Tools"], ["SQL Formatter", "Developer Tools"], ["Regular Expression Tester", "Developer Tools"], ["User Agent Parser", "Developer Tools"], ["HTTP Headers Check", "Developer Tools"], ["DNS Lookup UI", "Developer Tools"], ["Whois Lookup UI", "Developer Tools"], ["Port Scanner UI", "Developer Tools"], ["Ping Test UI", "Developer Tools"],
-
-            // Fun / Random
-            ["Random Number Generator", "Fun / Random"], ["Coin Flipper", "Fun / Random"], ["Dice Roller", "Fun / Random"], ["Random Choice Picker", "Fun / Random"], ["Yes/No Generator", "Fun / Random"], ["Meme Generator UI", "Fun / Random"], ["Love Calculator", "Fun / Random"], ["Zodiac Finder", "Fun / Random"], ["Trivia Quiz UI", "Fun / Random"], ["Reaction Time Test", "Fun / Random"],
-
-            // Productivity
-            ["To-Do List", "Productivity"], ["Pomodoro Timer", "Productivity"], ["Notes App", "Productivity"], ["Mind Map UI", "Productivity"], ["Kanban Board UI", "Productivity"], ["Typing Speed Test", "Productivity"], ["Day Planner", "Productivity"], ["Goal Tracker", "Productivity"], ["Habit Tracker", "Productivity"], ["Budget Planner", "Productivity"]
-        ];
-
-        rawToolsList.forEach(item => toolsData.push(createTool(item[0], item[1])));
-
-        // Ensure we have exactly 100? If less, the list above is approx 90, let's fill duplicates to ensure 100 requirement is met safely for the demo.
-        while(toolsData.length < 100) {
-            toolsData.push(createTool(`Extra Tool ${toolsData.length + 1}`, "Utilities"));
-        }
-
-        // ---------------------------------------------------
-        // 2. SEO GENERATOR (10k Keywords)
-        // ---------------------------------------------------
-        function generateSEO() {
-            const bases = ["tool", "online", "free", "generator", "converter", "calculator", "utility", "web app", "software", "pirateruler"];
-            const adjectives = ["fast", "secure", "best", "top", "easy", "simple", "pro", "dev", "2025"];
-            let keywords = [];
-            
-            // Combinatorics for high density keywords
-            toolsData.forEach(tool => {
-                keywords.push(tool.name);
-                keywords.push(tool.name + " online");
-                keywords.push("free " + tool.name);
-                bases.forEach(base => {
-                    keywords.push(tool.name + " " + base);
-                });
-            });
-
-            // Fill remaining to reach near 10k count (simulation)
-            // Note: Real browsers might truncate actual 10k words, but we inject a massive string.
-            let seoString = keywords.join(", ");
-            document.getElementById('seo-keywords').setAttribute('content', seoString);
-            console.log("SEO Keywords Injected: " + keywords.length + " variations.");
-        }
-
-        // ---------------------------------------------------
-        // 3. CORE SPA ENGINE
-        // ---------------------------------------------------
-        
-        function renderSidebar() {
-            const menu = document.getElementById('sidebar-menu');
-            let html = '';
-
-            categories.forEach(cat => {
-                const catTools = toolsData.filter(t => t.category === cat);
-                if(catTools.length > 0) {
-                    html += `<div class="category-title">${cat}</div>`;
-                    catTools.forEach(tool => {
-                        html += `<a onclick="navigateTo('${tool.id}')" class="nav-link" id="link-${tool.id}">${tool.name}</a>`;
-                    });
-                }
-            });
-            menu.innerHTML = html;
-        }
-
-        function navigateTo(toolId) {
-            // Close mobile sidebar
-            document.getElementById('sidebar').classList.remove('open');
-            
-            // Update Active State
-            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-            const activeLink = document.getElementById(`link-${toolId}`);
-            if(activeLink) activeLink.classList.add('active');
-
-            // Find Tool Data
-            const tool = toolsData.find(t => t.id === toolId);
-            
-            if(tool) {
-                renderToolUI(tool);
-            } else {
-                renderHome();
-            }
-        }
-
-        function renderToolUI(tool) {
-            const container = document.getElementById('content-area');
-            container.innerHTML = `
-                <div class="tool-container">
-                    <div class="tool-header">
-                        <h1 class="tool-title">${tool.name}</h1>
-                        <div class="tool-subtitle">By PirateRuler.com | Category: ${tool.category}</div>
-                        <p class="tool-desc">${tool.desc}</p>
-                    </div>
-
-                    <div class="tool-ui-placeholder">
-                        <div class="input-group">
-                            <label style="display:block; margin-bottom:5px; font-weight:bold;">Input Data</label>
-                            <input type="text" class="input-mock" placeholder="Enter value here...">
-                        </div>
-                        <div class="input-group">
-                             <label style="display:block; margin-bottom:5px; font-weight:bold;">Settings</label>
-                             <select class="input-mock">
-                                <option>Default Option</option>
-                                <option>Advanced Option</option>
-                             </select>
-                        </div>
-                        <br>
-                        <button class="btn-mock">Execute ${tool.name}</button>
-                        <button class="btn-mock" style="background:transparent; border:1px solid #00c6ff; color:#00c6ff; margin-left:10px;">Reset</button>
-                        <br><br>
-                        <div style="margin-top:20px; padding:15px; background:rgba(0,0,0,0.05); border-radius:8px;">
-                            <strong>Result Output:</strong><br>
-                            <span style="color:var(--text-sec); font-style:italic;">Waiting for input...</span>
-                        </div>
-                    </div>
-
-                    <div style="text-align:center; margin-top:30px;">
-                        <p>Like this tool?</p>
-                        <a href="https://pirateruler.com" class="visit-btn" style="display:inline-block; width:auto; padding:10px 30px;">Explore More at PirateRuler.com</a>
-                        <br>
-                        <a href="https://pirateruler.com" class="tool-visit-link">Visit Official PirateRuler Website</a>
-                    </div>
-                </div>
-            `;
-            window.scrollTo(0,0);
-        }
-
-        function renderHome() {
-            const container = document.getElementById('content-area');
-            container.innerHTML = `
-                <div style="text-align:center; padding: 50px 20px;">
-                    <h1 style="font-size:3rem; font-weight:900; margin-bottom:20px; background: -webkit-linear-gradient(#00c6ff, #0072ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Tools by PirateRuler.com</h1>
-                    <p style="font-size:1.2rem; color:var(--text-sec); max-width:600px; margin:0 auto;">
-                        Access 100+ free, developer-friendly, and secure online tools. 
-                        No installation required. Runs 100% in your browser.
-                    </p>
-                    <br><br>
-                    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:20px; max-width:1000px; margin:0 auto;">
-                        ${categories.map(cat => `
-                            <div class="tool-container" style="padding:20px; text-align:left; cursor:pointer; margin:0;" onclick="document.querySelector('#sidebar').scrollTop = document.querySelector('.category-title:contains(${cat})').offsetTop">
-                                <h3 style="color:#00c6ff;">${cat}</h3>
-                                <p style="font-size:0.9rem; margin-top:5px;">View ${toolsData.filter(t=>t.category===cat).length} Tools</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderSitemap() {
-            const container = document.getElementById('content-area');
-            let xmlPreview = `&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;<br>`;
-            
-            // Home
-            xmlPreview += `&nbsp;&nbsp;&lt;url&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;loc&gt;https://tools.pirateruler.com/&lt;/loc&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;changefreq&gt;daily&lt;/changefreq&gt;<br>&nbsp;&nbsp;&lt;/url&gt;<br>`;
-
-            // Tools
-            toolsData.forEach(tool => {
-                xmlPreview += `&nbsp;&nbsp;&lt;url&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;loc&gt;https://tools.pirateruler.com/#${tool.id}&lt;/loc&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;changefreq&gt;weekly&lt;/changefreq&gt;<br>&nbsp;&nbsp;&lt;/url&gt;<br>`;
-            });
-
-            xmlPreview += `&lt;/urlset&gt;`;
-
-            container.innerHTML = `
-                <div class="tool-container">
-                    <h1 class="tool-title">Sitemap</h1>
-                    <p>Generated Sitemap.xml structure for SEO.</p>
-                    <div style="background:#222; color:#0f0; padding:20px; border-radius:8px; font-family:monospace; overflow-x:auto; margin-top:20px;">
-                        ${xmlPreview}
-                    </div>
-                </div>
-            `;
-        }
-
-        // ---------------------------------------------------
-        // 4. UTILITIES
-        // ---------------------------------------------------
-        function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-            const icon = document.querySelector('.theme-toggle');
-            icon.innerHTML = body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        }
-
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-        }
-
-        // JQuery-like contains selector helper for the home render click
-        jQuery = { contains: (text) => {} } // Dummy, logic handled in renderSidebar
-
-        // ---------------------------------------------------
-        // 5. INITIALIZATION
-        // ---------------------------------------------------
-        window.onload = function() {
-            generateSEO();
-            renderSidebar();
-            renderHome();
-        };
-
-    </script>
 </body>
+
 </html>
+
+
