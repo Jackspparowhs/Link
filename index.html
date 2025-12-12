@@ -6,23 +6,22 @@
 <meta name="theme-color" content="#000000" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<title>Pins — PirateRuler.com</title>
-<link rel="icon" type="image/x-icon" href="https://pirateruler.com/favicon.ico">
-<link rel="icon" sizes="512x512" href="https://pirateruler.com/favicon-512.png">
-<link rel="apple-touch-icon" href="https://pirateruler.com/apple-touch-icon.png">
+<title>Pinterest Gallery — PirateRuler.com</title>
+<link rel="icon" type="image/x-icon" href="https://pirateruler.com/favicon.ico ">
+<link rel="icon" sizes="512x512" href="https://pirateruler.com/favicon-512.png ">
+<link rel="apple-touch-icon" href="https://pirateruler.com/apple-touch-icon.png ">
 
-<meta name="description" content="Discover infinite ideas. Infinite scroll, instant search, direct download, completely free." />
-<meta property="og:title" content="Pins by PirateRuler.com" />
-<meta property="og:description" content="High-quality pins and ideas, infinite scroll, direct download, completely free." />
-<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23e60023'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter' font-weight='800' font-size='200' text-anchor='middle' dominant-baseline='middle' fill='white'%3EP%3C/text%3E%3C/svg%3E" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect rx='14' width='64' height='64' fill='%23e60023'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter,Arial,sans-serif' font-weight='800' font-size='26' text-anchor='middle' alignment-baseline='central' fill='white'%3EP%3C/text%3E%3C/svg%3E">
-<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlBpbnMiLAogICJzaG9ydF9uYW1lIjogIlBpbnMiLAogICJzdGFydF91cmwiOiAiL2luZGV4Lmh0bWwiLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmMGY0ZjgiLAogICJ0aGVtZV9jb2xvciI6ICIjZTYwMDIzIgp9Cg==">
+<meta name="description" content="Free Pinterest image gallery. Infinite scroll, instant search, direct download, completely free." />
+<meta property="og:title" content="Pinterest Gallery by PirateRuler.com" />
+<meta property="og:description" content="Browse Pinterest content with infinite scroll, direct download, completely free." />
+<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg ' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23000000'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter' font-weight='800' font-size='200' text-anchor='middle' dominant-baseline='middle' fill='white'%3EPR%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg ' width='64' height='64'%3E%3Crect rx='14' width='64' height='64' fill='%23000000'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter,Arial,sans-serif' font-weight='800' font-size='26' text-anchor='middle' alignment-baseline='central' fill='white'%3EPR%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlBpbnRlcmVzdCBHYWxsZXJ5IiwKICAic2hvcnRfbmFtZSI6ICJQaW50ZXJlc3QiLAogICJzdGFydF91cmwiOiAiL2luZGV4Lmh0bWwiLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmMGY0ZjgiLAogICJ0aGVtZV9jb2xvciI6ICIjMDAwMDAwIgp9Cg==">
 <style>
   /* ----  your original colour scheme ---- */
   :root{
     --bg:#f0f4f8; --card:#ffffff; --muted:#64748b; --text:#0f172a;
-    --border:#e2e8f0; --accent:#e60023; /* Changed accent to Pinterest Red */ 
-    --key-bg:#f1f5f9;
+    --border:#e2e8f0; --accent:#000000; --key-bg:#f1f5f9;
     --success:#10b981; --warning:#f59e0b; --error:#ef4444;
     --shadow-sm:0 1px 2px 0 rgba(0,0,0,0.05);
     --shadow-md:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
@@ -32,7 +31,7 @@
   }
   html.dark {
     --bg:#0f172a; --card:#1e293b; --muted:#94a3b8; --text:#f1f5f9;
-    --border:#334155; --accent:#e60023; --key-bg:#334155;
+    --border:#334155; --accent:#ffffff; --key-bg:#334155;
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
   html{scroll-behavior:smooth;}
@@ -41,19 +40,19 @@
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
   header.header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 24px; border-radius:var(--radius-xl); background:var(--card); box-shadow:var(--shadow-md); margin-bottom:20px; position:sticky; top:20px; z-index:100; border:1px solid var(--border);}
   .brand{display:flex; align-items:center; gap:12px;}
-  .logo{width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-weight:800; background:var(--accent); color:white; font-size:18px; flex-shrink:0; transition:var(--transition);}
+  .logo{width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-weight:800; background:var(--accent); color:var(--bg); font-size:18px; flex-shrink:0; transition:var(--transition);}
   .logo:hover{transform:scale(1.05) rotate(5deg);}
   .brand-title .title-strong{font-size:24px;font-weight:800;margin:0; letter-spacing:-0.5px; color:var(--accent);}
   .brand-title .by{font-size:13px;color:var(--muted); margin-top:2px}
   .header-actions{display:flex; gap:12px; align-items:center;}
   .theme-toggle{width:52px;height:26px;border-radius:13px;background:var(--border);position:relative;cursor:pointer;transition:var(--transition);padding:2px;}
-  .theme-toggle.active{background:var(--text);}
+  .theme-toggle.active{background:var(--accent);}
   .theme-slider-thumb{width:22px;height:22px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:12px;position:absolute;left:2px;top:2px;transition:var(--transition);box-shadow:var(--shadow-sm);}
   .theme-toggle.active .theme-slider-thumb{transform:translateX(26px);}
   .btn{padding:10px 16px; border-radius:var(--radius-md); border:1px solid var(--border); cursor:pointer; font-weight:600; background:var(--bg); color:var(--text); transition:var(--transition); box-shadow:var(--shadow-sm); text-decoration:none;}
-  .btn:hover{background:var(--accent); color:white; transform:translateY(-2px); box-shadow:var(--shadow-md);}
+  .btn:hover{background:var(--accent); color:var(--bg); transform:translateY(-2px); box-shadow:var(--shadow-md);}
   .hamb{width:44px;height:44px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid var(--border);font-weight:bold;background:var(--bg);transition:var(--transition);box-shadow:var(--shadow-sm); text-decoration:none;}
-  .hamb:hover{background:var(--accent);color:white;transform:translateY(-2deg) rotate(90deg);box-shadow:var(--shadow-md);}
+  .hamb:hover{background:var(--accent);color:var(--bg);transform:translateY(-2deg) rotate(90deg);box-shadow:var(--shadow-md);}
   .hero{padding:48px 24px;border-radius:var(--radius-xl);background:var(--card);box-shadow:var(--shadow-lg);margin-bottom:24px;}
   @media(min-width:1100px){.hero{padding:56px 48px;}}
   .hero .big{font-size:40px;font-weight:800;margin:0;text-align:center;letter-spacing:-1px;}
@@ -66,15 +65,15 @@
   .card h2{margin:0 0 12px 0;font-size:22px;font-weight:800;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px;}
   .hint{color:var(--muted);font-size:14px;margin-bottom:16px;line-height:1.5;}
   input[type="text"],input[type="number"],input[type="date"],input[type="color"],input[type="range"],select,textarea{width:100%;padding:14px;border-radius:var(--radius-md);border:1px solid var(--border);font-size:15px;background:var(--bg);color:var(--text);transition:var(--transition);box-shadow:var(--shadow-sm);font-family:inherit;}
-  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(230, 0, 35, 0.2);}
-  .dark input:focus,.dark select:focus,.dark textarea:focus{box-shadow:0 0 0 3px rgba(230, 0, 35, 0.2);}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1);}
+  .dark input:focus,.dark select:focus,.dark textarea:focus{box-shadow:0 0 0 3px rgba(96,165,250,0.2);}
   .row{display:flex;gap:12px;flex-wrap:wrap;}
   .row>*{flex:1;min-width:120px;}
-  .primary{background:var(--accent);color:white;padding:10px 16px;border-radius:var(--radius-md);border:1px solid var(--accent);font-weight:700;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm); text-decoration:none;}
+  .primary{background:var(--accent);color:var(--bg);padding:10px 16px;border-radius:var(--radius-md);border:1px solid var(--accent);font-weight:700;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm); text-decoration:none;}
   .primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
   .primary:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
   .ghost{background:var(--bg);color:var(--text);border:1px solid var(--border);padding:10px 14px;border-radius:var(--radius-md);cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm); text-decoration:none;}
-  .ghost:hover{background:var(--accent);color:white;transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .ghost:hover{background:var(--accent);color:var(--bg);transform:translateY(-2px);box-shadow:var(--shadow-md);}
   .result{margin-top:16px;font-weight:700;color:var(--text);border-top:1px solid var(--border);padding-top:14px;font-size:16px;min-height:24px;display:flex;align-items:center;gap:8px;}
   .result .icon{font-size:18px;}
   .result.success{color:var(--success);}
@@ -88,7 +87,7 @@
   @media(max-width:700px){.features{grid-template-columns:1fr;}}
   .feature{display:flex;gap:14px;align-items:center;padding:18px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--card);min-height:110px;transition:var(--transition);}
   .feature:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-  .f-icon{width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;background:var(--accent);flex-shrink:0;font-size:18px;}
+  .f-icon{width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);background:var(--accent);flex-shrink:0;font-size:18px;}
   .f-title{font-weight:700;margin-bottom:4px;}
   .f-desc{color:var(--muted);font-size:13px;line-height:1.5;}
   .useful-tips{margin-top:20px;padding:18px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg);}
@@ -97,7 +96,7 @@
   .useful-tips li{margin:8px 0;color:var(--muted);font-size:14px;line-height:1.5;}
   .useful-tips li strong{color:var(--text);}
   footer{margin-top:24px;padding:24px;border-radius:var(--radius-xl);background:var(--card);border:1px solid var(--border);text-align:center;box-shadow:var(--shadow-md);}
-  .visit{padding:12px 24px;border-radius:var(--radius-md);display:inline-block;background:var(--accent);color:white;font-weight:800;text-decoration:none;transition:var(--transition);box-shadow:var(--shadow-sm);}
+  .visit{padding:12px 24px;border-radius:var(--radius-md);display:inline-block;background:var(--accent);color:var(--bg);font-weight:800;text-decoration:none;transition:var(--transition);box-shadow:var(--shadow-sm);}
   .visit:hover{transform:translateY(-3px) scale(1.02);box-shadow:var(--shadow-lg);}
   .muted{color:var(--muted);font-size:14px;line-height:1.5;}
   .spacer{height:10px}
@@ -106,14 +105,14 @@
   .close{display:flex;justify-content:flex-end;}
   .nav-list{margin-top:16px;display:flex;flex-direction:column;gap:8px}
   .nav-list a{display:block;padding:14px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg);color:var(--text);font-weight:600;transition:var(--transition);box-shadow:var(--shadow-sm); text-decoration:none;}
-  .nav-list a:hover{background:var(--accent);color:white;transform:translateX(-6px);box-shadow:var(--shadow-md);}
+  .nav-list a:hover{background:var(--accent);color:var(--bg);transform:translateX(-6px);box-shadow:var(--shadow-md);}
   .backup{margin-top:18px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);padding-top:12px;line-height:1.5;}
   .toast{position:fixed;bottom:24px;right:24px;padding:16px 20px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow-lg);transform:translateY(120px);transition:transform .3s cubic-bezier(.2,.9,.3,1);z-index:1001;font-weight:600;display:flex;align-items:center;gap:10px;max-width:320px;}
   .toast.show{transform:translateY(0);}
   .toast .icon{font-size:20px;}
   
   /* ----  gallery & modal ---- */
-  #gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px;}
+  #gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:16px;}
     
   /* MOBILE GRID OVERRIDE: 2 Columns on small screens */
   @media(max-width:480px){
@@ -132,45 +131,19 @@
   .copy-btn{font-size:12px;padding:6px 10px;margin-left:8px;}
   .brand a{text-decoration:none;}
     
-  /* MODIFIED: Pinterest Style Card */
-  .pin-card{
-    background:var(--bg);
-    border-radius:var(--radius-lg);
-    overflow:hidden;
-    cursor:pointer;
-    transition:var(--transition);
-    box-shadow:var(--shadow-sm);
-    position:relative; 
-    display:flex; 
-    flex-direction:column;
-    height: 100%;
-    break-inside: avoid;
-  }
-  .pin-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+  .app-card{background:var(--bg);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm);position:relative; aspect-ratio: 1/1; display:flex; flex-direction:column;}
+  .app-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
     
-  /* Image takes up natural space */
-  .pin-card .pin-image{
-    width:100%;
-    display:block;
-    background:var(--key-bg);
-    min-height: 150px;
-    object-fit: cover;
-  }
-  .pin-card .pin-image img{width:100%;height:100%;display:block; transition: filter 0.3s ease;}
+  /* Pin Image fills entire card */
+  .app-card .app-icon{width:100%;height:100%;object-fit:cover;display:block;background:var(--key-bg); position:relative; overflow:hidden;}
+  .app-card .app-icon img{width:100%;height:100%;object-fit:cover;filter:blur(6px);transition:filter .3s ease;}
+  .app-card .app-icon img.hd-ready{filter:blur(0);}
     
-  /* Pin Info section */
-  .pin-card .pin-info{padding:10px; display:flex; flex-direction:column;}
-  .pin-card .pin-title{font-weight:700; font-size:13px; color:var(--text); margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
-  .pin-card .pin-meta{font-size:11px; color:var(--muted); display:flex; justify-content:space-between; align-items:center;}
-  .pin-save-btn{
-      position:absolute; top:10px; right:10px;
-      background:var(--accent); color:white;
-      padding:6px 12px; border-radius:20px;
-      font-weight:700; font-size:12px;
-      opacity:0; transition:var(--transition);
-      box-shadow:var(--shadow-md);
-  }
-  .pin-card:hover .pin-save-btn{opacity:1;}
+  /* Pin Info overlay on hover */
+  .app-card .app-info{position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(0,0,0,0.8)); padding:12px; opacity:0; transition:opacity .3s ease; height:auto; color:white;}
+  .app-card:hover .app-info{opacity:1;}
+  .app-card .app-name{font-weight:700; font-size:14px; margin-bottom:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .app-card .app-developer{font-size:12px; margin-bottom:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
     
   .loading-spinner{display:inline-block;width:20px;height:20px;border:3px solid var(--border);border-top:3px solid var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin-left:8px;}
   @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
@@ -179,48 +152,50 @@
   .no-more:hover{background:var(--key-bg);}
     
   #searchBox{width:100%;padding:14px;border-radius:var(--radius-md);border:1px solid var(--border);font-size:15px;background:var(--bg);color:var(--text);transition:var(--transition);box-shadow:var(--shadow-sm);}
-  #searchBox:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(230, 0, 35, 0.1);}
-  .dark #searchBox:focus{box-shadow:0 0 0 3px rgba(230, 0, 35, 0.2);}
+  #searchBox:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1);}
+  .dark #searchBox:focus{box-shadow:0 0 0 3px rgba(96,165,250,0.2);}
     
-  /* ----  modal updated for PIN Details (Scrollable) ---- */
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s ease;}
+  /* ----  modal updated for Pinterest Pins ---- */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s ease;}
   .modal.show{opacity:1;pointer-events:auto;}
     
   .modal-content{
-    width:100%; max-width:900px; max-height:90vh;
+    width:100%; max-width:1000px; max-height:90vh;
     background:var(--card); border-radius:var(--radius-xl);
     border:1px solid var(--border); box-shadow:var(--shadow-lg);
     display:flex; flex-direction:column; overflow:hidden;
-    /* Ensure modal content handles internal scrolling if needed */
   }
     
   @media (min-width: 768px) {
-    .modal-content { flex-direction: row; height: 700px; }
-    /* The media col now scrolls if image is super long */
-    .modal-media-col { flex: 1.2; background: var(--key-bg); overflow-y:auto; display:flex; flex-direction:column; align-items:center; }
-    .modal-info-col { flex: 1; padding: 30px; display:flex; flex-direction:column; overflow-y:auto; border-left:1px solid var(--border);}
+    .modal-content { flex-direction: row; height: 600px; }
+    .modal-media-col { flex: 1; background: var(--key-bg); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .modal-info-col { flex: 1.5; padding: 40px; display:flex; flex-direction:column; justify-content:center; overflow-y:auto;}
   }
     
   .modal-media-col img {
-    width: 100%; height: auto; object-fit: contain; display:block;
+    width: 100%; height: 100%; object-fit: contain; border-radius:var(--radius-lg);
   }
     
-  .modal-info-col { padding: 20px; }
+  .modal-info-col { padding: 24px; }
     
-  .modal-title { font-size: 24px; font-weight: 800; margin-bottom: 12px; line-height:1.3;}
-  .modal-desc { font-size: 15px; color: var(--text); line-height: 1.6; margin-bottom: 20px; }
-  .modal-meta { font-size: 13px; color: var(--muted); margin-bottom: 30px; display:flex; gap:10px; align-items:center;}
-  .modal-btn-row { display: flex; gap: 12px; align-items: center; margin-top: auto; padding-top:20px; border-top:1px solid var(--border);}
+  .modal-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+  .modal-developer { font-size: 18px; color: var(--muted); margin-bottom: 16px; }
+  .modal-desc { font-size: 16px; color: var(--text); line-height: 1.6; margin-bottom: 20px; }
+  .modal-btn-row { display: flex; gap: 12px; align-items: center; margin-top: auto; }
     
+  /* ----  tabs ---- */
+  .tabs{display:flex;gap:8px;margin-bottom:16px;justify-content:center;}
+  .tab-btn{flex:0 0 auto; width:auto; min-width:80px; text-align:center;}
+  .tab-btn.active{background:var(--accent);color:var(--bg);}
   /* ----  category chips ---- */
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;justify-content:center;}
   .chip{
-    cursor:pointer;padding:8px 16px;border-radius:24px;
+    cursor:pointer;padding:8px 16px;border-radius:20px;
     border:1px solid var(--border);background:var(--bg);
     font-size:14px;font-weight:600;transition:var(--transition);
   }
-  .chip:hover{background:var(--accent);color:white;transform:translateY(-2px); border-color:var(--accent);}
-  .chip.active{background:var(--text);color:var(--bg); border-color:var(--text);}
+  .chip:hover{background:var(--accent);color:var(--bg);transform:translateY(-2px);}
+  .chip.active{background:var(--accent);color:var(--bg);}
 </style>
 </head>
 <body>
@@ -229,9 +204,9 @@
   <header class="header" role="banner">
     <div class="brand">
       <a href="index.html" aria-label="Home" style="display:flex;align-items:center;gap:12px">
-        <div class="logo" aria-hidden="true">P</div>
+        <div class="logo" aria-hidden="true">PR</div>
         <div class="brand-title">
-          <div class="title-strong">Pins</div>
+          <div class="title-strong">Pinterest</div>
           <div class="by">by PirateRuler.com</div>
         </div>
       </a>
@@ -245,34 +220,38 @@
   </header>
 
   <section class="hero" aria-labelledby="heroTitle">
-    <h1 id="heroTitle" class="big">Discover Ideas</h1>
-    <p class="small">Explore infinite inspiration. Design, art, travel, and more. Direct from Pinterest feeds.</p>
+    <h1 id="heroTitle" class="big">Pinterest Gallery</h1>
+    <p class="small">Browse Pinterest content. Infinite scroll, instant search, direct download, completely free.</p>
   </section>
 
   <main id="main-content" class="grid">
     <div>
       <section id="gallery-sec" class="card">
         
-        <input id="searchBox" type="text" placeholder="Filter current pins..." autocomplete="off" style="margin-bottom:20px;">
+        <input id="searchBox" type="text" placeholder="Search pins..." autocomplete="off" style="margin-bottom:20px;">
+        
+        <div class="tabs">
+          <button class="btn primary tab-btn active" data-type="pins">Pins</button>
+        </div>
 
         <div class="chips" id="chips">
-          <span class="chip active" data-board="pinterest/today">Today</span>
-          <span class="chip" data-board="pinterest/art">Art</span>
-          <span class="chip" data-board="pinterest/design">Design</span>
-          <span class="chip" data-board="pinterest/travel-ideas">Travel</span>
-          <span class="chip" data-board="pinterest/home-decor">Home Decor</span>
-          <span class="chip" data-board="pinterest/diy-and-crafts">DIY</span>
-          <span class="chip" data-board="pinterest/food-and-drink">Food</span>
-          <span class="chip" data-board="pinterest/humor">Humor</span>
+          <span class="chip active" data-query="popular">Popular</span>
+          <span class="chip" data-query="nature">Nature</span>
+          <span class="chip" data-query="art">Art</span>
+          <span class="chip" data-query="technology">Technology</span>
+          <span class="chip" data-query="food">Food</span>
+          <span class="chip" data-query="fashion">Fashion</span>
+          <span class="chip" data-query="travel">Travel</span>
+          <span class="chip" data-query="design">Design</span>
         </div>
 
         <div id="gallery" aria-live="polite"></div>
         
         <div id="loader" class="no-more" onclick="loadMore()">
-            Load More Ideas <span class="loading-spinner" style="display:none;"></span>
+            Load More <span class="loading-spinner" style="display:none;"></span>
         </div>
         
-        <div id="endMsg" class="no-more" style="display:none;">🎉 You're all caught up!</div>
+        <div id="endMsg" class="no-more" style="display:none;">🎉 You reached the end.</div>
       </section>
     </div>
 
@@ -281,19 +260,20 @@
         <div class="panel-title">Information</div>
         
         <div class="useful-tips" style="margin-top:0; border:none; background:transparent; padding:0;">
-          <p class="muted" style="margin-top:0;"><strong>About:</strong><br>This tool streams public Pinterest feeds directly to your browser without tracking.</p>
-          <p class="muted"><strong>How to Save:</strong><br>Click any Pin to view the full resolution image, then click <strong>"Download Image"</strong> to save it.</p>
+          <p class="muted" style="margin-top:0;"><strong>Description:</strong><br>Browse beautiful Pinterest images completely for free with direct downloads.</p>
+          <p class="muted"><strong>How to Download:</strong><br>Click any pin to see details, then click <strong>"Direct Download"</strong> to save the image instantly.</p>
         </div>
 
         <div class="spacer"></div>
         <div class="feature" style="min-height:unset;align-items:flex-start;padding:14px">
-          <div class="f-icon">P</div>
+          <div class="f-icon">PR</div>
           <div>
-            <div class="f-title">Pins by PirateRuler.com</div>
+            <div class="f-title">Pinterest by PirateRuler.com</div>
             <div class="f-desc" style="margin-top:6px;display:flex;gap:10px;flex-wrap:wrap;">
-              <a class="btn" href="https://pirateruler.com/post/about.html" target="_blank" rel="noopener">About</a>
-              <a class="btn" href="https://pirateruler.com/post/privacy.html" target="_blank" rel="noopener">Privacy</a>
-              <a class="btn" href="https://pirateruler.com/post/contact.html" target="_blank" rel="noopener">Contact</a>
+              <a class="btn" href="https://pirateruler.com/post/about.html " target="_blank" rel="noopener">About</a>
+              <a class="btn" href="https://pirateruler.com/post/privacy.html " target="_blank" rel="noopener">Privacy</a>
+              <a class="btn" href="https://pirateruler.com/post/contact.html " target="_blank" rel="noopener">Contact</a>
+              <a class="btn" href="https://pirateruler.com/post/terms.html " target="_blank" rel="noopener">Terms</a>
             </div>
           </div>
         </div>
@@ -302,9 +282,9 @@
   </main>
 
   <footer>
-    <a class="visit" href="https://pirateruler.com" target="_blank" rel="noopener">Visit PirateRuler.com</a>
+    <a class="visit" href="https://pirateruler.com " target="_blank" rel="noopener">Visit PirateRuler.com</a>
     <div style="height:12px"></div>
-    <small class="muted">© <span id="year"></span> Pins by PirateRuler.com — Backup & resources: pirateruler.com | <span id="pwa-status"></span></small>
+    <small class="muted">© <span id="year"></span> Pinterest by PirateRuler.com — Backup & resources: pirateruler.com | <span id="pwa-status"></span></small>
   </footer>
 </div>
 
@@ -313,13 +293,13 @@
   <h3>PirateRuler Links</h3>
   <p class="muted">Quick links & backup resources</p>
   <nav class="nav-list">
-    <a href="https://pirateruler.com/post/about.html" target="_blank" rel="noopener">About — PirateRuler</a>
-    <a href="https://pirateruler.com/post/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-    <a href="https://pirateruler.com/post/contact.html" target="_blank" rel="noopener">Contact</a>
-    <a href="https://pirateruler.com/post/terms.html" target="_blank" rel="noopener">Terms & Service</a>
+    <a href="https://pirateruler.com/post/about.html " target="_blank" rel="noopener">About — PirateRuler</a>
+    <a href="https://pirateruler.com/post/privacy.html " target="_blank" rel="noopener">Privacy Policy</a>
+    <a href="https://pirateruler.com/post/contact.html " target="_blank" rel="noopener">Contact</a>
+    <a href="https://pirateruler.com/post/terms.html " target="_blank" rel="noopener">Terms & Service</a>
   </nav>
   <div class="backup">
-    If this site is offline you can visit PirateRuler for backups & resources:<br><a href="https://pirateruler.com" target="_blank">pirateruler.com</a>
+    If this site is offline you can visit PirateRuler for backups & resources:<br><a href="https://pirateruler.com " target="_blank">pirateruler.com</a>
   </div>
 </aside>
 
@@ -333,8 +313,7 @@
         <div id="modalTextContent">
             </div>
         <div class="modal-btn-row">
-             <a id="modalDownload" class="btn primary" style="flex:1; text-align:center;" target="_blank">Download Image</a>
-             <a id="modalSource" class="btn ghost" target="_blank">View on Pinterest</a>
+             <a id="modalDownload" class="btn primary" style="flex:1; text-align:center;" download>Direct Download</a>
              <button class="btn ghost" onclick="closeModal()">✕</button>
         </div>
     </div>
@@ -380,152 +359,140 @@
     showToast._t = setTimeout(() => toast.classList.remove('show'), 3500);
   }
 
-  /* ----------  Pinterest API Integration (RSS Bridge)  ---------- */
+  /* ----------  Pinterest API Integration  ---------- */
   
-  // We use rss2json as a bridge because direct Pinterest API calls are blocked by CORS in static files.
-  const RSS_TO_JSON = 'https://api.rss2json.com/v1/api.json';
-  
+  // Using Pinterest's internal API endpoint (publicly accessible)
+  const PINTEREST_API = 'https://www.pinterest.com/resource/BaseSearchResource/get/';
+  const PER_PAGE = 24;
+
   const searchBox       = document.getElementById('searchBox');
   const gallery         = document.getElementById('gallery');
   const loader          = document.getElementById('loader');
-  const loaderSpinner   = loader.querySelector('.loading-spinner');
+  const loaderSpinner = loader.querySelector('.loading-spinner');
   const endMsg          = document.getElementById('endMsg');
   const modal           = document.getElementById('modal');
    
   // Modal Elements
-  const modalMedia       = document.getElementById('modalMedia');
+  const modalMedia    = document.getElementById('modalMedia');
   const modalTextContent = document.getElementById('modalTextContent');
-  const modalDownload    = document.getElementById('modalDownload');
-  const modalSource      = document.getElementById('modalSource');
+  const modalDownload = document.getElementById('modalDownload');
 
   // state
-  let currentBoard = 'pinterest/today'; // Default board
-  let allPins = []; // Store fetched pins for client-side filtering
+  let currentQuery = 'popular';
+  let currentBookmark = null;
   let loading = false;
+  let endReached = false;
 
   // helper: escape attr
   function escapeAttr(s){ return String(s||'').replace(/'/g,"%27").replace(/"/g,'&quot;'); }
+    
+  // store loaded items keyed by id -> item
+  const itemsMap = new Map();
 
-  // Extract High Res image from RSS description
-  function extractImage(description) {
-    const div = document.createElement('div');
-    div.innerHTML = description;
-    const img = div.querySelector('img');
-    // Pinterest RSS often sends a small image, we try to guess the big one or use what's given
-    if(img) {
-        // usually format is .../236x/... we want .../originals/... or .../736x/...
-        return img.src.replace('/236x/', '/736x/'); 
-    }
-    return '';
+  // fetch pins from Pinterest API
+  async function fetchPins(bookmark = null) {
+    const query = currentQuery && currentQuery.trim() ? currentQuery : 'popular';
+    
+    const data = {
+      options: {
+        query: query,
+        scope: 'pins',
+        bookmarks: bookmark ? [bookmark] : []
+      }
+    };
+    
+    const url = `${PINTEREST_API}?data=${encodeURIComponent(JSON.stringify(data))}`;
+    
+    const res = await fetch(url, {
+      headers: {
+        'Accept': 'application/json, text/javascript, */*; q=0.01',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
+    
+    if (!res.ok) throw new Error(`Pinterest API Error: ${res.status}`);
+    return await res.json();
   }
 
-  function pinToItem(item) {
+  // Process Pinterest pin data
+  function pinToItem(pin) {
+    const images = pin.images || {};
+    const bestImage = images['736x'] || images['564x'] || images['236x'] || images['originals'];
+    
     return {
-      key: 'pin-' + Math.random().toString(36).substr(2, 9),
-      title: item.title,
-      link: item.link,
-      pubDate: item.pubDate,
-      author: item.author,
-      description: item.description,
-      // Extract clean text from description HTML
-      cleanDesc: item.description.replace(/<[^>]*>?/gm, ''),
-      image: extractImage(item.description)
+      type: 'pin',
+      key: 'pin-' + pin.id,
+      image: bestImage?.url || '',
+      width: bestImage?.width || 0,
+      height: bestImage?.height || 0,
+      title: pin.title || 'Untitled Pin',
+      description: pin.description || 'No description',
+      source: pin.domain || 'Unknown source',
+      pinUrl: pin.url || `https://pinterest.com/pin/${pin.id}`,
+      boardName: pin.board?.name || '',
+      pinner: pin.pinner?.full_name || 'Unknown',
+      id: pin.id
     };
   }
 
-  // Build HTML Pin card
+  // Build HTML pin card
   function buildPinCard(pin){
-    if(!pin.image) return ''; // Skip text-only items
     return `
-      <div class="pin-card" data-key="${escapeAttr(pin.key)}" onclick='openModalForKey("${escapeAttr(pin.key)}")'>
-        <div class="pin-save-btn">Save</div>
-        <div class="pin-image">
-          <img src="${escapeAttr(pin.image)}" loading="lazy" alt="${escapeAttr(pin.title)}">
+      <div class="app-card" data-key="${escapeAttr(pin.key)}" onclick='openModalForKey("${escapeAttr(pin.key)}")'>
+        <div class="app-icon">
+          <img src="${escapeAttr(pin.image)}" loading="lazy" alt="${escapeAttr(pin.title)}" data-upgrade="0">
         </div>
-        <div class="pin-info">
-          <div class="pin-title">${escapeAttr(pin.title)}</div>
-          <div class="pin-meta">
-            <span>By ${escapeAttr(pin.author)}</span>
-          </div>
+        <div class="app-info">
+          <div class="app-name">${escapeAttr(pin.title)}</div>
+          <div class="app-developer">by ${escapeAttr(pin.pinner)}</div>
         </div>
       </div>`;
   }
 
-  // Fetch Pins
-  async function fetchPins(board) {
-    const url = `${RSS_TO_JSON}?rss_url=https://www.pinterest.com/${board}.rss&api_key=`; 
-    // Note: Free rss2json has limits, but works for demos. 
-    // If it fails, we fall back or show error.
+  // main loader
+  async function loadMore(){
+    if (loading || endReached) return;
     
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('Network error');
-      const data = await res.json();
-      if(data.status === 'ok') {
-          return data.items;
-      } else {
-          throw new Error('RSS Error');
-      }
-    } catch (e) {
-      console.error(e);
-      showToast('Could not fetch new pins. Limits may apply.', '⚠️');
-      return [];
-    }
-  }
-
-  const itemsMap = new Map();
-
-  async function loadBoard(boardName, isLoadMore = false){
-    if (loading) return;
     setLoading(true);
-    
-    try {
-      // In a real API we would paginate. RSS only gives latest 20-50.
-      // We simulate "Load More" by just shuffling or keeping existing if we were using a real API.
-      // For this static demo, we clear and load new board, or if 'load more' we just say end reached
-      // because RSS doesn't support pagination easily without a backend.
+    try{
+      const data = await fetchPins(currentBookmark);
+      const pins = data?.resource_response?.data || [];
+      const nextBookmark = data?.resource?.options?.bookmarks?.[0] || null;
       
-      if(!isLoadMore) {
-          gallery.innerHTML = '';
-          allPins = [];
-          itemsMap.clear();
-      } else {
-          // RSS limitations: cannot paginate deep.
-          endReached();
-          setLoading(false);
-          return;
+      if (!pins.length) {
+        endReached = true;
+        endMsg.style.display = 'block';
+        loader.style.display = 'none';
+        return;
       }
-
-      const items = await fetchPins(boardName);
       
-      if(items.length > 0) {
-         const pins = items.map(pinToItem);
-         allPins = pins;
-         renderPins(pins);
-      } else {
-         endReached();
+      const pinItems = pins.map(pinToItem);
+      appendItems(pinItems);
+      currentBookmark = nextBookmark;
+      
+      // Check if we got fewer items than requested (end of results)
+      if (pins.length < PER_PAGE || !nextBookmark) {
+        endReached = true;
+        endMsg.style.display = 'block';
+        loader.style.display = 'none';
       }
-
-    } catch(err){
-      showToast('Error loading pins', '❌');
-    } finally {
+      
+    }catch(err){
+      console.error(err);
+      showToast('API Error: Could not fetch pins', '❌');
+      endReached = true;
+      endMsg.style.display = 'block';
+      loader.style.display = 'none';
+    }finally{
       setLoading(false);
     }
   }
 
-  function renderPins(list) {
-      const html = list.map(p => {
-          itemsMap.set(p.key, p);
-          return buildPinCard(p);
-      }).join('');
-      gallery.insertAdjacentHTML('beforeend', html);
-      loader.style.display = 'block';
-      endMsg.style.display = 'none';
-  }
-
-  function endReached() {
-      loader.style.display = 'none';
-      endMsg.style.display = 'block';
+  function appendItems(list){
+    const html = list.map(buildPinCard).join('');
+    gallery.insertAdjacentHTML('beforeend', html);
+    list.forEach(i => itemsMap.set(i.key, i));
+    observeNewImages();
   }
 
   function setLoading(bool){
@@ -539,79 +506,91 @@
       }
   }
 
-  function loadMore(){
-      // RSS limitation workaround: We can't really "load more" from the same RSS feed
-      // So we just show the end message.
-      endReached();
-  }
-
-  // Modal behavior
+  // Modal behavior: Pin Details
   function openModalForKey(key){
     const item = itemsMap.get(key);
     if(!item) return;
     
-    // Clear previous
+    // 1. Clear previous
     modalMedia.innerHTML = '';
     modalTextContent.innerHTML = '';
 
-    // Populate Media (Left Side) - Full scrollable image
-    // We try to replace 236x with originals if possible for better quality
-    const highRes = item.image.replace('/736x/', '/originals/').replace('/236x/', '/originals/');
-    
-    modalMedia.innerHTML = `<img src="${escapeAttr(highRes)}" onerror="this.src='${item.image}'" alt="${escapeAttr(item.title)}">`;
+    // 2. Populate Media (Left Side)
+    modalMedia.innerHTML = `<img src="${escapeAttr(item.image)}" alt="${escapeAttr(item.title)}">`;
 
-    // Populate Text
+    // 3. Populate Text (Right Side)
     modalTextContent.innerHTML = `
         <div class="modal-title">${escapeAttr(item.title)}</div>
-        <div class="modal-meta">
-            <span style="background:var(--accent); color:white; padding:2px 8px; border-radius:10px;">${item.author}</span>
-            <span>${new Date(item.pubDate).toLocaleDateString()}</span>
-        </div>
-        <div class="modal-desc">
-            ${item.cleanDesc || 'No description available for this pin.'}
-        </div>
+        <div class="modal-developer">by ${escapeAttr(item.pinner)}</div>
+        <div class="modal-desc">${escapeAttr(item.description)}</div>
+        <div class="modal-size">Source: ${escapeAttr(item.source)}</div>
+        <div class="modal-version">Board: ${escapeAttr(item.boardName)}</div>
     `;
 
-    modalDownload.href = highRes;
-    modalDownload.setAttribute('download', 'pin.jpg');
-    modalSource.href = item.link;
-
+    // 4. Set download link
+    modalDownload.href = item.image;
+    modalDownload.setAttribute('download', `pinterest-${item.id}.jpg`);
+    modalDownload.onclick = (e) => {
+      showToast('Starting download...', '📥');
+    };
+    
     modal.classList.add('show');
     modal.setAttribute('aria-hidden','false');
-    // Prevent body scroll
-    document.body.style.overflow = 'hidden';
   }
 
   function closeModal(){
     modal.classList.remove('show');
     modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
   }
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  // Search Filter (Client Side)
-  searchBox.addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase();
-      const filtered = allPins.filter(p => 
-          p.title.toLowerCase().includes(term) || 
-          p.cleanDesc.toLowerCase().includes(term)
-      );
-      gallery.innerHTML = '';
-      renderPins(filtered);
-      loader.style.display = 'none'; // Hide loader during search filter
-      if(filtered.length === 0) gallery.innerHTML = '<div style="padding:20px; text-align:center; color:var(--muted)">No pins found in this board.</div>';
+  // Observe images for HD upgrade
+  const imgObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if (!entry.isIntersecting) return;
+      const img = entry.target;
+      if (img.dataset.upgrade === '1') { imgObserver.unobserve(img); return; }
+      img.classList.add('hd-ready');
+      img.dataset.upgrade = '1';
+      imgObserver.unobserve(img);
+    });
+  },{rootMargin:'300px 0px 300px 0px',threshold:0.01});
+  function observeNewImages(root = gallery){
+    root.querySelectorAll('img[data-upgrade="0"]').forEach(img => imgObserver.observe(img));
+  }
+
+  // chips (categories)
+  function activateChip(query){
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    document.querySelector(`.chip[data-query="${query}"]`)?.classList.add('active');
+    currentQuery = query || '';
+    gallery.innerHTML = '';
+    itemsMap.clear();
+    currentBookmark = null;
+    endReached = false;
+    loader.style.display = 'block';
+    endMsg.style.display = 'none';
+    loadMore();
+  }
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', ()=> activateChip(chip.dataset.query));
   });
 
-  // Chips (Category Boards)
-  document.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', ()=> {
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        currentBoard = chip.dataset.board;
-        loadBoard(currentBoard);
-        searchBox.value = ''; // clear search
-    });
+  // search input
+  let searchTimeout;
+  searchBox.addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(()=>{
+      currentQuery = searchBox.value.trim();
+      gallery.innerHTML = '';
+      itemsMap.clear();
+      currentBookmark = null;
+      endReached = false;
+      loader.style.display = 'block';
+      endMsg.style.display = 'none';
+      loadMore();
+    }, 450);
   });
 
   // Infinite scroll
@@ -622,9 +601,10 @@
   }, { rootMargin: '400px' });
   io.observe(loader);
 
-  // Init
-  loadBoard(currentBoard);
-
+  // Kickoff with popular pins
+  (function init(){
+    loadMore();
+  })();
 </script>
 </body>
 </html>
