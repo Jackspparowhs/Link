@@ -6,17 +6,17 @@
 <meta name="theme-color" content="#000000" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<title>Gallery — PirateRuler.com</title>
+<title>Pins — PirateRuler.com</title>
 <link rel="icon" type="image/x-icon" href="https://pirateruler.com/favicon.ico ">
 <link rel="icon" sizes="512x512" href="https://pirateruler.com/favicon-512.png ">
 <link rel="apple-touch-icon" href="https://pirateruler.com/apple-touch-icon.png ">
 
-<meta name="description" content="Free image gallery. Infinite scroll, instant search, completely free." />
-<meta property="og:title" content="Gallery by PirateRuler.com" />
-<meta property="og:description" content="High-quality images, infinite scroll, completely free." />
+<meta name="description" content="Discover recipes, home ideas, style inspiration and other ideas to try." />
+<meta property="og:title" content="Pins by PirateRuler.com" />
+<meta property="og:description" content="Infinite scroll, instant search, direct download, high quality inspiration." />
 <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg ' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23000000'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter' font-weight='800' font-size='200' text-anchor='middle' dominant-baseline='middle' fill='white'%3EPR%3C/text%3E%3C/svg%3E" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg ' width='64' height='64'%3E%3Crect rx='14' width='64' height='64' fill='%23000000'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter,Arial,sans-serif' font-weight='800' font-size='26' text-anchor='middle' alignment-baseline='central' fill='white'%3EPR%3C/text%3E%3C/svg%3E">
-<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkFwcHMiLAogICJzaG9ydF9uYW1lIjogIkFwcHMiLAogICJzdGFydF91cmwiOiAiL2luZGV4Lmh0bWwiLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmMGY0ZjgiLAogICJ0aGVtZV9jb2xvciI6ICIjMDAwMDAwIgp9Cg==">
+<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlBpbnMiLAogICJzaG9ydF9uYW1lIjogIlBpbnMiLAogICJzdGFydF91cmwiOiAiL2luZGV4Lmh0bWwiLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmMGY0ZjgiLAogICJ0aGVtZV9jb2xvciI6ICIjMDAwMDAwIgp9Cg==">
 <style>
   /* ----  your original colour scheme ---- */
   :root{
@@ -111,32 +111,24 @@
   .toast.show{transform:translateY(0);}
   .toast .icon{font-size:20px;}
   
-  /* ----  Pinterest-style Gallery (Masonry Layout) ---- */
+  /* ----  UPDATED GALLERY: PINTEREST STYLE MASONRY ---- */
   #gallery {
-    display: block;
-    column-count: 2;
-    column-gap: 12px;
-    margin-top: 16px;
+    column-count: 4;
+    column-gap: 16px;
+    margin-top: 24px;
   }
-    
-  @media(min-width: 768px){
-    #gallery {
-      column-count: 3;
-    }
-  }
-    
-  @media(min-width: 1100px){
-    #gallery {
-      column-count: 4;
-    }
-  }
-
+  
+  @media(max-width:1200px){ #gallery { column-count: 3; } }
+  @media(max-width:768px){ #gallery { column-count: 2; } }
+  
+  /* MOBILE GRID OVERRIDE: 2 Columns on small screens */
   @media(max-width:480px){
     .hero .big{font-size:28px;}
     .container{padding:12px;}
     .header{top:12px;padding:12px 16px;}
     .grid{gap:16px;}
     .card{padding:20px;}
+    #gallery { column-count: 2; column-gap: 10px; } 
   }
 
   ::-webkit-scrollbar{width:8px;height:8px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:var(--muted);}
@@ -144,56 +136,32 @@
   .copy-btn{font-size:12px;padding:6px 10px;margin-left:8px;}
   .brand a{text-decoration:none;}
     
-  .pin-card {
-    break-inside: avoid;
-    margin-bottom: 12px;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    background: var(--card);
+  /* PINTEREST PIN CARD STYLE */
+  .pin-card{
+    background:var(--bg);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    cursor:pointer;
+    transition:var(--transition);
+    box-shadow:var(--shadow-sm);
+    position:relative;
+    display:flex; 
+    flex-direction:column;
+    margin-bottom: 16px; /* Spacing for masonry */
+    break-inside: avoid; /* Essential for masonry */
   }
-  .pin-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-  }
+  .pin-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
     
-  .pin-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    background: var(--key-bg);
-  }
+  .pin-card .pin-image{width:100%; display:block; background:var(--key-bg);}
+  .pin-card .pin-image img{width:100%;height:auto; display:block; filter:blur(6px);transition:filter .3s ease;}
+  .pin-card .pin-image img.hd-ready{filter:blur(0);}
     
-  .pin-info {
-    padding: 12px;
-  }
-    
-  .pin-title {
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 4px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-    
-  .pin-author {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-    
-  .pin-stats {
-    font-size: 11px;
-    color: var(--muted);
-    font-weight: 600;
-    display: flex;
-    gap: 8px;
-  }
+  /* Pin Info section */
+  .pin-info{padding:12px;}
+  .pin-title{font-weight:700; font-size:14px; color:var(--text); margin-bottom:4px; line-height:1.4;}
+  .pin-author{display:flex; align-items:center; gap:6px; margin-top:8px;}
+  .pin-avatar{width:20px; height:20px; border-radius:50%; background:var(--border);}
+  .pin-author-name{font-size:12px; color:var(--muted); font-weight:500;}
     
   .loading-spinner{display:inline-block;width:20px;height:20px;border:3px solid var(--border);border-top:3px solid var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin-left:8px;}
   @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
@@ -205,43 +173,36 @@
   #searchBox:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1);}
   .dark #searchBox:focus{box-shadow:0 0 0 3px rgba(96,165,250,0.2);}
     
-  /* ----  Modal for Pin Details ---- */
+  /* ----  modal updated for Pin Details ---- */
   .modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s ease;}
   .modal.show{opacity:1;pointer-events:auto;}
     
   .modal-content{
-    width:100%; max-width:800px; max-height:90vh;
+    width:100%; max-width:1000px; max-height:90vh;
     background:var(--card); border-radius:var(--radius-xl);
     border:1px solid var(--border); box-shadow:var(--shadow-lg);
     display:flex; flex-direction:column; overflow:hidden;
   }
     
   @media (min-width: 768px) {
-    .modal-content { flex-direction: row; max-height: 80vh; }
-    .modal-media-col { flex: 1; background: var(--key-bg); display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    .modal-info-col { flex: 1; padding: 40px; display:flex; flex-direction:column; overflow-y:auto;}
+    .modal-content { flex-direction: row; height: 600px; }
+    .modal-media-col { flex: 1; background: var(--key-bg); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative;}
+    .modal-info-col { flex: 1.5; padding: 40px; display:flex; flex-direction:column; overflow-y:auto;}
   }
     
   .modal-media-col img {
-    width: 100%;
-    height: auto;
-    max-height: 50vh;
-    object-fit: cover;
+    width: 100%; height: 100%; object-fit: contain;
   }
     
   .modal-info-col { padding: 24px; }
     
-  .modal-title { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
-  .modal-author { font-size: 16px; color: var(--muted); margin-bottom: 16px; }
-  .modal-desc { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 20px; }
-  .modal-stats { font-size: 14px; color: var(--muted); margin-bottom: 30px; }
-    
+  .modal-title { font-size: 24px; font-weight: 800; margin-bottom: 8px; line-height:1.3; }
+  .modal-author { font-size: 16px; color: var(--muted); margin-bottom: 16px; display:flex; align-items:center; gap:8px;}
+  .modal-desc { font-size: 16px; color: var(--text); line-height: 1.6; margin-bottom: 20px; }
+  .modal-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:30px; }
+  .tag { font-size:12px; background:var(--key-bg); padding:4px 8px; border-radius:4px; color:var(--muted); }
   .modal-btn-row { display: flex; gap: 12px; align-items: center; margin-top: auto; }
     
-  /* ----  tabs ---- */
-  .tabs{display:flex;gap:8px;margin-bottom:16px;justify-content:center; flex-wrap: wrap;}
-  .tab-btn{flex:0 0 auto; width:auto; min-width:80px; text-align:center;}
-  .tab-btn.active{background:var(--accent);color:var(--bg);}
   /* ----  category chips ---- */
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;justify-content:center;}
   .chip{
@@ -261,7 +222,7 @@
       <a href="index.html" aria-label="Home" style="display:flex;align-items:center;gap:12px">
         <div class="logo" aria-hidden="true">PR</div>
         <div class="brand-title">
-          <div class="title-strong">Gallery</div>
+          <div class="title-strong">Pins</div>
           <div class="by">by PirateRuler.com</div>
         </div>
       </a>
@@ -275,29 +236,24 @@
   </header>
 
   <section class="hero" aria-labelledby="heroTitle">
-    <h1 id="heroTitle" class="big">Gallery by PirateRuler</h1>
-    <p class="small">Free high-quality images. Infinite scroll, instant search, completely free.</p>
+    <h1 id="heroTitle" class="big">Pins by PirateRuler</h1>
+    <p class="small">Visual discovery engine. Infinite scroll, instant search, direct download.</p>
   </section>
 
   <main id="main-content" class="grid">
     <div>
       <section id="gallery-sec" class="card">
         
-        <input id="searchBox" type="text" placeholder="Search images..." autocomplete="off" style="margin-bottom:20px;">
+        <input id="searchBox" type="text" placeholder="Search for ideas..." autocomplete="off" style="margin-bottom:20px;">
         
-        <div class="tabs">
-          <button class="btn primary tab-btn active" data-type="all">All</button>
-          <button class="btn ghost tab-btn" data-type="photos">Photos</button>
-          <button class="btn ghost tab-btn" data-type="illustrations">Illustrations</button>
-        </div>
-
         <div class="chips" id="chips">
-          <span class="chip active" data-query="nature">Nature</span>
-          <span class="chip" data-query="technology">Technology</span>
+          <span class="chip active" data-query="random">For You</span>
+          <span class="chip" data-query="nature">Nature</span>
           <span class="chip" data-query="architecture">Architecture</span>
-          <span class="chip" data-query="people">People</span>
-          <span class="chip" data-query="animals">Animals</span>
+          <span class="chip" data-query="fashion">Fashion</span>
           <span class="chip" data-query="food">Food</span>
+          <span class="chip" data-query="travel">Travel</span>
+          <span class="chip" data-query="art">Art</span>
         </div>
 
         <div id="gallery" aria-live="polite"></div>
@@ -315,20 +271,19 @@
         <div class="panel-title">Information</div>
         
         <div class="useful-tips" style="margin-top:0; border:none; background:transparent; padding:0;">
-          <p class="muted" style="margin-top:0;"><strong>Description:</strong><br>Access thousands of high-quality images completely for free.</p>
-          <p class="muted"><strong>How to Download:</strong><br>Click on any image to see details, then click the <strong>"Download"</strong> button to save the image.</p>
+          <p class="muted" style="margin-top:0;"><strong>Description:</strong><br>Discover and download high-quality vertical images and inspiration.</p>
+          <p class="muted"><strong>How to Download:</strong><br>Click on any pin to view, then click the <strong>"Download Image"</strong> button.</p>
         </div>
 
         <div class="spacer"></div>
         <div class="feature" style="min-height:unset;align-items:flex-start;padding:14px">
           <div class="f-icon">PR</div>
           <div>
-            <div class="f-title">Gallery by PirateRuler.com</div>
+            <div class="f-title">Pins by PirateRuler.com</div>
             <div class="f-desc" style="margin-top:6px;display:flex;gap:10px;flex-wrap:wrap;">
               <a class="btn" href="https://pirateruler.com/post/about.html " target="_blank" rel="noopener">About</a>
               <a class="btn" href="https://pirateruler.com/post/privacy.html " target="_blank" rel="noopener">Privacy</a>
               <a class="btn" href="https://pirateruler.com/post/contact.html " target="_blank" rel="noopener">Contact</a>
-              <a class="btn" href="https://pirateruler.com/post/terms.html " target="_blank" rel="noopener">Terms</a>
             </div>
           </div>
         </div>
@@ -339,7 +294,7 @@
   <footer>
     <a class="visit" href="https://pirateruler.com " target="_blank" rel="noopener">Visit PirateRuler.com</a>
     <div style="height:12px"></div>
-    <small class="muted">© <span id="year"></span> Gallery by PirateRuler.com — Backup & resources: pirateruler.com | <span id="pwa-status"></span></small>
+    <small class="muted">© <span id="year"></span> Pins by PirateRuler.com — Backup & resources: pirateruler.com | <span id="pwa-status"></span></small>
   </footer>
 </div>
 
@@ -368,7 +323,7 @@
         <div id="modalTextContent">
             </div>
         <div class="modal-btn-row">
-             <a id="modalDownload" class="btn primary" style="flex:1; text-align:center;" download>Download</a>
+             <a id="modalDownload" class="btn primary" style="flex:1; text-align:center;" download>Download Image</a>
              <button class="btn ghost" onclick="closeModal()">✕</button>
         </div>
     </div>
@@ -414,14 +369,12 @@
     showToast._t = setTimeout(() => toast.classList.remove('show'), 3500);
   }
 
-  /* ----------  Unsplash API Integration (Pinterest-style) ---------- */
+  /* ----------  PINTEREST / UNSPLASH API INTEGRATION  ---------- */
   
-  // Get your free API key from https://unsplash.com/developers
-  // For demo purposes, I'll use a placeholder - you need to replace it
-  const UNSPLASH_ACCESS_KEY = 'YOUR_UNSPLASH_ACCESS_KEY_HERE';
+  // To use real search, get a free Access Key from: https://unsplash.com/developers
+  // If left empty, the code falls back to Picsum Photos (Random placeholder API) which works without a key.
+  const API_KEY = ''; 
   
-  const PER_PAGE = 30;
-
   const searchBox       = document.getElementById('searchBox');
   const gallery         = document.getElementById('gallery');
   const loader          = document.getElementById('loader');
@@ -435,122 +388,130 @@
   const modalDownload = document.getElementById('modalDownload');
 
   // state
-  let currentType = 'all';
-  let currentQuery = 'nature';
+  let currentQuery = 'random';
   let currentPage = 1;
   let loading = false;
   let endReached = false;
 
   // helper: escape attr
   function escapeAttr(s){ return String(s||'').replace(/'/g,"%27").replace(/"/g,'&quot;'); }
-
-  // pin item structure
-  function imageToPin(image) {
-    return {
-      type: 'image',
-      key: 'pin-' + image.id,
-      imageUrl: image.urls.regular,
-      thumbUrl: image.urls.small,
-      title: image.description || image.alt_description || 'Untitled',
-      author: image.user.name,
-      authorLink: image.user.links.html,
-      likes: image.likes,
-      downloads: image.downloads || Math.floor(Math.random() * 1000),
-      width: image.width,
-      height: image.height,
-      downloadUrl: image.links.download_location || image.urls.full,
-      color: image.color
-    };
+  
+  // Pin data mapper
+  function mapToPin(data, isDemo = false) {
+    if(isDemo) {
+        // Picsum structure
+        const height = Math.floor(Math.random() * (600 - 300 + 1) + 300); // Random height to simulate masonry
+        return {
+            key: data.id,
+            small: `https://picsum.photos/id/${data.id}/300/${height}`,
+            full: `https://picsum.photos/id/${data.id}/1080/1920`,
+            width: 300,
+            height: height,
+            title: `Pin #${data.id}`,
+            author: data.author,
+            avatar: `https://ui-avatars.com/api/?name=${data.author}&background=random`,
+            description: "A beautiful random shot provided by Picsum Photos."
+        };
+    } else {
+        // Unsplash structure
+        return {
+            key: data.id,
+            small: data.urls.small,
+            full: data.urls.regular,
+            width: data.width,
+            height: data.height,
+            title: data.alt_description || "Untitled Pin",
+            author: data.user.name,
+            avatar: data.user.profile_image.small,
+            description: data.description || data.alt_description || "No description available."
+        };
+    }
   }
 
-  // Build HTML pin card (Pinterest-style)
+  // Build HTML Pin card
   function buildPinCard(pin){
-    const ratio = (pin.height / pin.width) * 100;
+    // Determine aspect ratio for placeholder
+    const aspectRatio = (pin.height / pin.width) * 100;
+    
     return `
-      <div class="pin-card" data-key="${escapeAttr(pin.key)}" onclick='openModalForKey("${escapeAttr(pin.key)}")'>
-        <img class="pin-image" src="${escapeAttr(pin.thumbUrl)}" loading="lazy" alt="${escapeAttr(pin.title)}">
+      <div class="pin-card" onclick='openModalForKey("${escapeAttr(pin.key)}")'>
+        <div class="pin-image">
+          <img src="${escapeAttr(pin.small)}" loading="lazy" alt="${escapeAttr(pin.title)}" data-upgrade="0">
+        </div>
         <div class="pin-info">
           <div class="pin-title">${escapeAttr(pin.title)}</div>
-          <div class="pin-author">by ${escapeAttr(pin.author)}</div>
-          <div class="pin-stats">❤️ ${pin.likes} | ⬇️ ${pin.downloads}</div>
+          <div class="pin-author">
+             <img src="${pin.avatar}" class="pin-avatar">
+             <span class="pin-author-name">${escapeAttr(pin.author)}</span>
+          </div>
         </div>
       </div>`;
   }
 
-  // store loaded items keyed by key -> item
+  // store loaded items
   const itemsMap = new Map();
 
-  // fetch images from Unsplash API
-  async function fetchImages(page = 1, query = '') {
-    const q = query && query.trim() ? query : 'nature';
-    const limit = PER_PAGE;
+  async function fetchPins(page = 1, query = '') {
+    const perPage = 20;
     
-    let url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(q)}&per_page=${limit}&page=${page}`;
+    // Check if we are in Demo mode (No API Key)
+    if (!API_KEY) {
+        // Use Picsum List for demo
+        // Picsum doesn't support query search, so we just random page
+        const url = `https://picsum.photos/v2/list?page=${page}&limit=${perPage}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('API Error');
+        const data = await res.json();
+        return data.map(item => mapToPin(item, true));
+    } 
     
-    // Add orientation filter based on type
-    if (currentType === 'photos') {
-      url += '&orientation=landscape';
-    } else if (currentType === 'illustrations') {
-      url += '&orientation=squarish';
+    // Real API (Unsplash)
+    let url = '';
+    if (query === 'random' || !query) {
+       url = `https://api.unsplash.com/photos?page=${page}&per_page=${perPage}&client_id=${API_KEY}`;
+    } else {
+       url = `https://api.unsplash.com/search/photos?page=${page}&per_page=${perPage}&query=${encodeURIComponent(query)}&client_id=${API_KEY}`;
     }
     
-    const res = await fetch(url, {
-      headers: {
-        'Authorization': `Client-ID ${UNSPLASH_ACCESS_KEY}`
-      }
-    });
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Unsplash Error: ${res.status}`);
+    const data = await res.json();
     
-    if (!res.ok) {
-      if (res.status === 401) {
-        throw new Error('Invalid Unsplash API key. Please get a free key from unsplash.com/developers');
-      }
-      throw new Error(`API Error: ${res.status}`);
-    }
-    return await res.json();
+    // Search returns data.results, list returns data
+    const results = data.results || data; 
+    return results.map(item => mapToPin(item, false));
   }
 
-  // helper: append items to DOM and keep map
   function appendItems(list){
     const html = list.map(buildPinCard).join('');
     gallery.insertAdjacentHTML('beforeend', html);
     list.forEach(i => itemsMap.set(i.key, i));
+    observeNewImages();
   }
 
-  // main loader
   async function loadMore(){
     if (loading || endReached) return;
     
     setLoading(true);
     try{
-      const data = await fetchImages(currentPage, currentQuery);
-      const images = data.results || [];
+      const pins = await fetchPins(currentPage, currentQuery);
       
-      if (!images.length) {
+      if (!pins || !pins.length) {
         endReached = true;
         endMsg.style.display = 'block';
         loader.style.display = 'none';
         return;
       }
       
-      const pinItems = images.map(imageToPin);
-      appendItems(pinItems);
+      appendItems(pins);
       currentPage++;
-      
-      // Check if we got fewer items than requested (end of results)
-      if (images.length < PER_PAGE) {
-        endReached = true;
-        endMsg.style.display = 'block';
-        loader.style.display = 'none';
-      }
       
     }catch(err){
       console.error(err);
-      showToast('API Error: ' + err.message, '❌');
-      if (err.message.includes('API key')) {
-        gallery.innerHTML = `<div style="text-align:center; padding:40px; color:var(--muted);">
-          <p>Please add your Unsplash API key to use this feature.</p>
-          <p style="font-size:13px; margin-top:12px;">Get a free key from <a href="https://unsplash.com/developers" target="_blank" style="color:var(--accent);">unsplash.com/developers</a></p>
-        </div>`;
+      if(!API_KEY) {
+           showToast('Error loading demo images.', '❌');
+      } else {
+           showToast('API Rate limit or Invalid Key', '❌');
       }
     }finally{
       setLoading(false);
@@ -568,34 +529,61 @@
       }
   }
 
-  // Modal behavior: Pin Details
+  const imgObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if (!entry.isIntersecting) return;
+      const img = entry.target;
+      if (img.dataset.upgrade === '1') { imgObserver.unobserve(img); return; }
+      img.classList.add('hd-ready');
+      img.dataset.upgrade = '1';
+      imgObserver.unobserve(img);
+    });
+  },{rootMargin:'300px 0px 300px 0px',threshold:0.01});
+  function observeNewImages(root = gallery){
+    root.querySelectorAll('img[data-upgrade="0"]').forEach(img => imgObserver.observe(img));
+  }
+
+  // Modal behavior
   function openModalForKey(key){
     const item = itemsMap.get(key);
     if(!item) return;
     
-    // Populate Media (Left Side)
-    modalMedia.innerHTML = `<img src="${escapeAttr(item.imageUrl)}" alt="${escapeAttr(item.title)}">`;
+    modalMedia.innerHTML = '';
+    modalTextContent.innerHTML = '';
 
-    // Populate Text (Right Side)
+    modalMedia.innerHTML = `<img src="${escapeAttr(item.full)}" alt="${escapeAttr(item.title)}">`;
+
     modalTextContent.innerHTML = `
         <div class="modal-title">${escapeAttr(item.title)}</div>
-        <div class="modal-author">by <a href="${escapeAttr(item.authorLink)}" target="_blank" style="color:var(--accent);">${escapeAttr(item.author)}</a></div>
-        <div class="modal-stats">❤️ ${item.likes} likes • ${item.downloads} downloads</div>
-        <div class="modal-desc">Resolution: ${item.width} × ${item.height}px<br>Color: ${item.color}</div>
+        <div class="modal-author">
+             <img src="${item.avatar}" style="width:24px;height:24px;border-radius:50%">
+             <span>${escapeAttr(item.author)}</span>
+        </div>
+        <div class="modal-desc">${escapeAttr(item.description)}</div>
     `;
 
-    // Set download link
-    modalDownload.href = item.downloadUrl;
-    modalDownload.onclick = (e) => {
-      showToast('Starting download...', '⬇️');
-      // Track download in Unsplash
-      fetch(item.downloadUrl, {
-        headers: {
-          'Authorization': `Client-ID ${UNSPLASH_ACCESS_KEY}`
-        }
-      });
+    // Download Logic
+    modalDownload.href = item.full; // For simple usage
+    modalDownload.onclick = async (e) => {
+      e.preventDefault();
+      showToast('Downloading image...', '⬇️');
+      
+      // Attempt to force download blob
+      try {
+          const image = await fetch(item.full);
+          const imageBlog = await image.blob();
+          const imageURL = URL.createObjectURL(imageBlog);
+          const link = document.createElement('a');
+          link.href = imageURL;
+          link.download = `pirateruler_pin_${key}.jpg`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      } catch(e) {
+          // Fallback if CORS blocks blob fetching
+          window.open(item.full, '_blank');
+      }
     };
-    modalDownload.setAttribute('download', `${item.title.replace(/[^a-zA-Z0-9]/g, '_')}.jpg`);
     
     modal.classList.add('show');
     modal.setAttribute('aria-hidden','false');
@@ -608,43 +596,21 @@
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  // Tabs behavior
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('active', 'primary');
-        b.classList.add('ghost');
-      });
-      e.target.classList.remove('ghost'); 
-      e.target.classList.add('primary'); 
-      e.target.classList.add('active');
-      const t = e.target.dataset.type;
-      setType(t);
-    });
-  });
-
-  function setType(t){
-    currentType = t;
-    gallery.innerHTML = '';
-    itemsMap.clear();
-    currentPage = 1;
-    endReached = false;
-    loader.style.display = 'block';
-    endMsg.style.display = 'none';
-    loadMore();
-  }
-
   // chips (categories)
   function activateChip(query){
     document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
     document.querySelectorAll(`.chip[data-query="${query}"]`).forEach(c => c.classList.add('active'));
-    currentQuery = query || '';
+    currentQuery = query || 'random';
     gallery.innerHTML = '';
     itemsMap.clear();
     currentPage = 1;
     endReached = false;
     loader.style.display = 'block';
     endMsg.style.display = 'none';
+    
+    // Simulate randomness if using demo mode (since Picsum doesn't search)
+    if (!API_KEY) currentPage = Math.floor(Math.random() * 20) + 1;
+    
     loadMore();
   }
   document.querySelectorAll('.chip').forEach(chip => {
@@ -656,8 +622,10 @@
   searchBox.addEventListener('input', () => {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(()=>{
-      currentQuery = searchBox.value.trim();
-      if (!currentQuery) currentQuery = 'nature';
+      currentQuery = searchBox.value.trim() || 'random';
+      // UI Update
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      
       gallery.innerHTML = '';
       itemsMap.clear();
       currentPage = 1;
@@ -676,15 +644,14 @@
   }, { rootMargin: '400px' });
   io.observe(loader);
 
-  // Kickoff with nature images
+  // Init
   (function init(){
+    if(!API_KEY) {
+        showToast('Demo Mode: Using placeholder images', '⚠️');
+        console.log("No API Key provided. Using Picsum Demo Mode.");
+    }
     loadMore();
   })();
-
-  // API Key check
-  if (UNSPLASH_ACCESS_KEY === 'YOUR_UNSPLASH_ACCESS_KEY_HERE') {
-    showToast('Please add your Unsplash API key', '⚠️');
-  }
 </script>
 </body>
 </html>
